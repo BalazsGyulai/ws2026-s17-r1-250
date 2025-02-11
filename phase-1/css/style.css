@@ -1,8 +1,196 @@
+/* ------------------
+        Colors
+
+#0d121f - nav backround
+#3d81db - nav log in btn
+#343843 - nav bottom border
+#C3D4E9 - download btn color
+#fff - text color
+#2D61B0 - blue btn hover backround
+#B2C0D6 - blue btn hover color
+------------------*/
+
 @font-face {
     font-family: PlusJakartaSans;
     src: url(../assets/fonts/PlusJakartaSans-VariableFont_wght.ttf);
 }
 
+:root {
+    --dark-backround: #0d121f;
+    --blue-btn-backround: #3d81db;
+    --nav-border: #343843;
+    --nav-btn-color: #C3D4E9;
+    --text-color: #fff;
+    --blue-btn-hover-backround: #2D61B0;
+    --blue-btn-hover-color: #B2C0D6;
+    --bottom-line-transition-time: 0.3s;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    scroll-behavior: smooth;
+}
+
 body {
     font-family: PlusJakartaSans;
+    color: var(--text-color);
+}
+
+/* --------------------------- */
+/* Delete this reference at the end */
+/* --------------------------- */
+#reference {
+    position: absolute;
+    width: 1440px;
+    height: 4017px;
+    opacity: 0.3;
+    z-index: -1;
+}
+
+/* --------------------------- */
+/*          Header */
+/* --------------------------- */
+
+header {
+    width: 100%;
+    height: 100vh;
+}
+
+header nav {
+    padding: 0 140px;
+    display: flex;
+    justify-content: space-between;
+    /* Fix paddings on the sides thus responsive space is applied between the elements of the navigation bar  */
+    align-items: center;
+    width: 100%;
+    height: 100px;
+    background: var(--dark-backround);
+    opacity: 1;
+    border-bottom: inset 1px var(--nav-border);
+    /* Measured pixel height of the navigation bar is 100px so border applied inside */
+}
+
+/* ------------------- */
+/* Styling the links */
+/* ------------------- */
+
+header #nav-links,
+header #nav-btns {
+    display: flex;
+    gap: 40px;
+    /* Space only between the links */
+    list-style: none;
+}
+
+header #nav-links a,
+header #nav-btns a {
+    text-decoration: none;
+    color: #fff;
+}
+
+header #nav-links li a {
+    position: relative;
+    padding-bottom: 4px;
+    /* Applied so the cursor doesn't bug between the animation and the text ;) */
+}
+
+/* ------------------- */
+/* Links' animation */
+/* ------------------- */
+
+header #nav-links li a::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 1px;
+    background-color: var(--text-color);
+    cursor: pointer;
+    transition: width var(--bottom-line-transition-time);
+}
+
+header #nav-links li a:hover::after {
+    width: 100%;
+    transition: width var(--bottom-line-transition-time);
+}
+
+
+/* ------------------- */
+/*  Side Buttons of the navigation bar  */
+/* ------------------- */
+
+header #nav-btns {
+    gap: 10px;
+}
+
+header #nav-btns li {
+    padding: 17px 23px;
+    /* Measured distances from the text thus the size of a button changes as the text */
+    border-radius: 50px;
+    color: var(--text-color);
+    background-color: var(--blue-btn-backround);
+}
+
+header #nav-btns li a {
+    position: relative;
+    transition: background-color var(--bottom-line-transition-time);
+    display: block;
+    color: inherit;
+    cursor: pointer;
+}
+
+/* ------------------- */
+/* Styles only for download button */
+/* ------------------- */
+
+header #nav-btns #btn-download {
+    background: none;
+    color: var(--nav-btn-color);
+}
+
+header #nav-btns #btn-download a {
+    position: relative;
+    padding-bottom: 4px;
+    /* Same rule as before on the links ;) */
+}
+
+/* ------------------- */
+/* Animation only for download button */
+/* ------------------- */
+
+
+header #nav-btns #btn-download a::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background-color: var(--nav-btn-color);
+    cursor: pointer;
+    transition: width var(--bottom-line-transition-time);
+}
+
+header #nav-btns #btn-download a:hover::after {
+    width: 100%;
+    transition: width var(--bottom-line-transition-time);
+}
+
+/* ------------------- */
+/* Styles only for Login button */
+/* ------------------- */
+
+
+header #nav-btns #btn-login {
+    padding: 17px 23px;
+}
+
+header #nav-btns #btn-login:hover {
+    background-color: var(--blue-btn-hover-backround);
+    color: var(--blue-btn-hover-color);
+    cursor: pointer;
+    transition: background-color var(--bottom-line-transition-time);
 }
