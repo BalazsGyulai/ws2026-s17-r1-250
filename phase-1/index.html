@@ -9,28 +9,44 @@
 </head>
 
 <body>
-    <!-- <img id="reference" src="./design/design-desktop.png" alt=""> -->
+    <img id="reference" src="./design/design-desktop.png" alt="">
     <header>
         <nav>
-            <a href="#" id="nav-logo">
-                <img src="./assets/images/sudsy-logo.svg" alt="sudsy-logo">
+            <div id="nav-desktop-container">
+                <a href="#" class="nav-logo">
+                    <img src="./assets/images/sudsy-logo.svg" alt="sudsy-logo">
+                </a>
 
-            </a>
-            <div id="nav-links-container">
+                <img src="./assets/images/hamburger-icon.svg" alt="menu-open-icon" id="menu-icon">
 
+                <input type="radio" name="nav-toggle" class="nav-toggle" id="nav-open-btn">
+                <input type="radio" name="nav-toggle" class="nav-toggle" id="nav-close-btn">
+                <input type="radio" name="nav-toggle" class="nav-toggle" id="nav-close-btn-side">
 
+                <div id="nav-container">
+                    <div id="nav-mobile-header">
+                        <a href="#" class="nav-logo">
+                            <img src="./assets/images/sudsy-logo.svg" alt="sudsy-logo">
+                        </a>
 
-                <ul id="nav-links">
-                    <li><a href="#++++scroll-to-section++++">About</a></li>
-                    <li><a href="#++++scroll-to-section++++">How it Works</a></li>
-                    <li><a href="#++++scroll-to-section++++">Why Sudsy</a></li>
-                    <li><a href="#++++scroll-to-section++++">Locations</a></li>
-                </ul>
+                        <img src="./assets/images/close-icon.svg" alt="menu-close-btn" id="menu-close-icon">
+                    </div>
+                    <ul id="nav-links">
+                        <li><a href="#++++scroll-to-section++++">About</a></li>
+                        <li><a href="#++++scroll-to-section++++">How it Works</a></li>
+                        <li><a href="#++++scroll-to-section++++">Why Sudsy</a></li>
+                        <li><a href="#++++scroll-to-section++++">Locations</a></li>
+                    </ul>
+                    <ul id="nav-btns">
+                        <li id="btn-download"><a href="">Download</a></li>
+                        <li id="btn-login"><a href="">Log In</a></li>
+                    </ul>
+                </div>
+
+                <div id="back-drop">
+
+                </div>
             </div>
-            <ul id="nav-btns">
-                <li id="btn-download"><a href="">Download</a></li>
-                <li id="btn-login"><a href="">Log In</a></li>
-            </ul>
         </nav>
     </header>
 </body>
