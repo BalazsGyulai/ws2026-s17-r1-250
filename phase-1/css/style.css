@@ -203,6 +203,7 @@ header #nav-btns #btn-download {
 
 header #nav-btns #btn-download a {
     position: relative;
+    color: inherit;
     padding-bottom: 4px;
     /* Same rule as before on the links ;) */
 }
