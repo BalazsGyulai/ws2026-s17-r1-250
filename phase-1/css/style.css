@@ -5,9 +5,15 @@
 #3d81db - nav log in btn
 #343843 - nav bottom border
 #C3D4E9 - download btn color
+#1A202C - grey btn back color
 #fff - text color
 #2D61B0 - blue btn hover backround
 #B2C0D6 - blue btn hover color
+#FCFDFE - title text top
+#DBE4F1 - title text bottom
+#9FB8D9 - title text bottom2
+#90A3BF - hero description color
+
 ------------------*/
 
 @font-face {
@@ -24,6 +30,10 @@
     --blue-btn-hover-backround: #2D61B0;
     --blue-btn-hover-color: #B2C0D6;
     --bottom-line-transition-time: 0.3s;
+    --title-color-top: #FCFDFE;
+    --title-color-bottom: #9FB8D9;
+    --hero-description-color: #90A3BF;
+    --grey-btn-backround: #1A202C;
 }
 
 * {
@@ -101,7 +111,9 @@ header #nav-desktop-container {
     background: var(--dark-backround);
     border-bottom: inset 1px var(--nav-border);
     /* Measured pixel height of the navigation bar is 100px so border applied inside */
+    z-index: 90;
 }
+
 
 header nav .nav-logo {
     width: clamp(100px, 100px + 1.2vw, 250px);
@@ -385,7 +397,100 @@ header #nav-btns #btn-login a:hover {
 /* ----------------------------------- */
 
 header #hero-container {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 28px;
     height: 66.6vh;
     background-color: var(--dark-backround);
-    opacity: 0.5;
+    overflow: hidden;
+}
+
+header #hero-container h1 {
+    /* padding: 10px 0; */
+    /* margin-bottom: 10px; */
+    display: block;
+    font-size: clamp(3.5rem, 3.5rem + 1vw, 4.5rem);
+    letter-spacing: -1.5px;
+    line-height: 1.5;
+    text-align: center;
+    color: transparent;
+    background: linear-gradient(180deg, var(--title-color-top), var(--title-color-bottom));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    z-index: 3;
+}
+
+header #hero-container p {
+    width: 56%;
+    font-size: clamp(1rem, 1rem + 0.2vw, 2rem);
+    text-align: center;
+    color: var(--hero-description-color);
+    line-height: 1.6;
+    letter-spacing: 0.2px;
+    z-index: 3;
+}
+
+.styled-btn {
+    padding: 16px 24px;
+    color: var(--text-color);
+    font-size: clamp(1rem, 1rem + 0.2vw, 2rem);
+    border-radius: 50px;
+}
+
+.blue-btn {
+    background-color: var(--blue-btn-backround);
+}
+
+.grey-btn {
+    background-color: var(--grey-btn-backround);
+    color: var(--nav-btn-color);
+}
+
+header #hero-navigation {
+    display: flex;
+    gap: 24px;
+    z-index: 3;
+}
+
+header #hero-navigation a {
+    font-size: inherit;
+    text-decoration: none;
+}
+
+/* Backround elements */
+header #hero-container .background-element {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 52%;
+    height: 80vh;
+    border: 95px solid #191e2a;
+    border-radius: 50%;
+    z-index: 1;
+}
+
+header #hero-container #top-right {
+    transform: translate(42%, -41%);
+}
+
+header #hero-container #bottom-left {
+    left: 0;
+    bottom: 0;
+    transform: translate(-77%, 34%);
+}
+
+header #hero-container .background-spot-light {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 755px;
+    height: 524px;
+    background: #90a3bf28;
+    filter: blur(100px);
+    border-radius: 50%;
+    z-index: 2;
 }
