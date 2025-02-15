@@ -421,6 +421,9 @@ header #hero-container h1 {
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     z-index: 3;
+    opacity: 0;
+    animation: appear-on-screen 1s;
+    animation-fill-mode: forwards;
 }
 
 header #hero-container p {
@@ -431,6 +434,10 @@ header #hero-container p {
     line-height: 1.6;
     letter-spacing: 0.2px;
     z-index: 3;
+    opacity: 0;
+    animation: appear-on-screen 1s;
+    animation-fill-mode: forwards;
+    animation-delay: 0.12s;
 }
 
 .styled-btn {
@@ -453,6 +460,10 @@ header #hero-navigation {
     display: flex;
     gap: 24px;
     z-index: 3;
+    opacity: 0;
+    animation: appear-on-screen 1s;
+    animation-fill-mode: forwards;
+    animation-delay: 0.24s;
 }
 
 header #hero-navigation a {
@@ -493,4 +504,16 @@ header #hero-container .background-spot-light {
     filter: blur(100px);
     border-radius: 50%;
     z-index: 2;
+}
+
+@keyframes appear-on-screen {
+    0% {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+
+    100% {
+        transform: translateY(0px);
+        opacity: 1;
+    }
 }
