@@ -39,7 +39,7 @@ body {
 }
 
 /* --------------------------- */
-/* Delete this reference at the end */
+/* Delete references at the end */
 /* --------------------------- */
 #reference {
     position: absolute;
@@ -49,10 +49,29 @@ body {
     z-index: -1;
 }
 
+#reference-mobile {
+    position: absolute;
+    width: 402px;
+    height: 4168px;
+    opacity: 0.3;
+    z-index: -1;
+}
+
+#reference-mobile-hamb {
+    position: absolute;
+    width: 402px;
+    height: 874px;
+    opacity: 0.3;
+    right: 0;
+    z-index: -1;
+}
+
+
 /* --------------------------- */
-/*          Header */
+/*   Header - Navigation */
 /* --------------------------- */
 
+/* Hide elements on big screens */
 header .nav-toggle,
 header #menu-icon,
 header #nav-mobile-header,
@@ -61,9 +80,8 @@ header #back-drop {
 }
 
 header #nav-container {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
+    display: contents;
+    /* On big screens this element wont affect its children */
 }
 
 header {
@@ -72,7 +90,7 @@ header {
 }
 
 header #nav-desktop-container {
-    padding: 0 35px;
+    padding: 0 40px;
     display: flex;
     justify-content: space-around;
     /* Fix paddings on the sides thus responsive space is applied between the elements of the navigation bar  */
@@ -87,8 +105,8 @@ header #nav-desktop-container {
 }
 
 header nav .nav-logo {
-    width: clamp(100px, 100px + 1vw, 250px);
-    margin-left: 15px;
+    width: clamp(100px, 100px + 1.2vw, 250px);
+    margin-top: 3px;
 }
 
 header nav .nav-logo img {
@@ -122,7 +140,6 @@ header #nav-btns {
     gap: 40px;
     /* Space only between the links */
     list-style: none;
-    /* padding-bottom: 4px; */
 }
 
 header #nav-links a,
@@ -136,7 +153,7 @@ header #nav-btns a {
 header #nav-links li a {
     position: relative;
     padding-bottom: 4px;
-    /* Applied so the cursor doesn't bug between the animation and the text ;) */
+    /* Applied so the cursor doesn't bug between the animated line and the text ;) */
 }
 
 /* ------------------- */
@@ -165,27 +182,14 @@ header #nav-links li a:hover::after {
 /*  Side Buttons of the navigation bar  */
 /* ------------------- */
 
-header #nav-btns {
-    display: flex;
-    gap: 10px;
+header nav #nav-btns {
+    gap: 32px;
 }
 
-header #nav-btns li {
-    display: flex;
-    align-items: center;
-    /* Measured distances from the text thus the size of a button changes as the text */
+header nav #nav-btns #btn-login a {
+    padding: 16px 24px;
     border-radius: 50px;
-    color: var(--text-color);
     background-color: var(--blue-btn-backround);
-}
-
-header #nav-btns li a {
-    position: relative;
-    transition: background-color var(--bottom-line-transition-time);
-    /* display: block; */
-    color: inherit;
-    cursor: pointer;
-    font-size: clamp(0.9rem, 0.9rem + 0.1vw, 2rem);
 }
 
 /* ------------------- */
@@ -200,15 +204,13 @@ header #nav-btns #btn-download {
 
 header #nav-btns #btn-download a {
     position: relative;
-    height: min-content;
-    /* padding-bottom: 4px; */
+    padding-bottom: 4px;
     /* Same rule as before on the links ;) */
 }
 
 /* ------------------- */
 /* Animation only for download button */
 /* ------------------- */
-
 
 header #nav-btns #btn-download a::after {
     content: '';
@@ -228,28 +230,27 @@ header #nav-btns #btn-download a:hover::after {
 }
 
 /* ------------------- */
-/* Styles only for Login button */
+/* Styles only for Login button and its animation */
 /* ------------------- */
 
-header #nav-btns #btn-login a {
-    padding: 16px 23px;
-}
-
 header #nav-btns #btn-login {
-    /* padding: 12px 23px; */
     order: 2;
 }
 
-header #nav-btns #btn-login:hover {
+header #nav-btns #btn-login a:hover {
     background-color: var(--blue-btn-hover-backround);
     color: var(--blue-btn-hover-color);
     cursor: pointer;
     transition: background-color var(--bottom-line-transition-time);
 }
 
+/* ---------------------- */
+/* Header - Navigation mobile screen */
+/* ---------------------- */
 
 @media screen and (max-width: 900px) {
 
+    /* Elements are shown on smaller screens */
     header .nav-toggle,
     header #menu-icon,
     header #nav-mobile-header {
@@ -259,9 +260,16 @@ header #nav-btns #btn-login:hover {
     header #nav-desktop-container {
         position: relative;
         justify-content: space-between;
-        padding: 0 20px;
+        padding: 0 20px 0 16px;
+        height: 63px;
     }
 
+    header nav .nav-logo {
+        width: clamp(100px, 100px + 4vw, 250px);
+        margin-left: 0;
+    }
+
+    /* Hidden input:radio elements */
     header .nav-toggle {
         position: absolute;
         top: 50%;
@@ -269,60 +277,72 @@ header #nav-btns #btn-login:hover {
         width: 30px;
         height: 30px;
         transform: translateY(-50%);
+        cursor: pointer;
+        opacity: 0;
     }
 
+    /* Navigation side bar */
     header #nav-container {
         display: none;
         padding: 0 25px;
     }
 
+    #nav-close-btn,
+    #nav-close-btn-side {
+        display: none;
+    }
+
     header #nav-mobile-header {
         width: 100%;
         height: 89px;
+        padding-bottom: 8px;
         display: flex;
         justify-content: space-between;
         align-items: center;
         border-bottom: inset 1px var(--nav-border);
     }
 
-
-
+    /* Navigation links */
     header #nav-links {
         width: 100%;
         display: inline-block;
-        padding: 25px 0;
-        margin-bottom: 32px;
+        padding: 20px 0;
+        margin-bottom: 36px;
         border-bottom: inset 1px var(--nav-border);
     }
 
     header #nav-links li {
         display: grid;
-        margin: 7px 0;
+        margin-bottom: 4px;
     }
 
     header #nav-links li a {
-        padding: 11px 0;
-        margin-bottom: 4px;
+        padding: 10px 0;
         height: 100%;
     }
 
-    header #nav-btns li {
-        padding: 12px 15px;
-        /* border-radius: ; */
+    /* Navigation side btns (login, download) */
+    header nav #nav-btns a {
+        font-size: clamp(0.8rem, 0.8rem + 0.2vw, 2rem);
+    }
+
+    header nav #nav-btns #btn-login a {
+        padding: 8px 16px;
     }
 
     header #nav-btns #btn-login {
         order: 0;
     }
 
-    header .nav-toggle {
-        opacity: 0;
-    }
-
-    #nav-close-btn,
-    #nav-close-btn-side,
-    #alma {
+    /* Show sidebar when input checked else hide it */
+    header #nav-close-btn-side,
+    header #back-drop {
         display: none;
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100vh;
     }
 
     header #nav-open-btn:checked~#nav-container {
@@ -330,7 +350,7 @@ header #nav-btns #btn-login:hover {
         position: absolute;
         top: 0;
         right: 0;
-        width: min(300px, 80%);
+        width: min(323px, 80%);
         height: 100vh;
         background-color: var(--dark-backround);
         z-index: 99;
@@ -343,21 +363,12 @@ header #nav-btns #btn-login:hover {
 
     header #nav-open-btn:checked~#nav-close-btn-side {
         display: block;
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100vh;
         z-index: 98;
     }
 
+    /* Blurred background */
     header #nav-open-btn:checked~#back-drop {
         display: block;
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100vh;
         backdrop-filter: blur(3px);
         z-index: 97;
     }
