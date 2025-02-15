@@ -406,6 +406,7 @@ header #hero-container {
     height: 66.6vh;
     background-color: var(--dark-backround);
     overflow: hidden;
+    opacity: 0.4;
 }
 
 header #hero-container h1 {
@@ -461,6 +462,7 @@ header #hero-navigation {
     gap: 24px;
     z-index: 3;
     opacity: 0;
+    /* font-size: clamp(1rem, 1rem + 0.2vw, 2rem); */
     animation: appear-on-screen 1s;
     animation-fill-mode: forwards;
     animation-delay: 0.24s;
@@ -516,4 +518,34 @@ header #hero-container .background-spot-light {
         transform: translateY(0px);
         opacity: 1;
     }
+}
+
+@media screen and (max-width: 900px) {
+    header #hero-container {
+        gap: 20px;
+        height: 45.5vh;
+    }
+
+    header #hero-container h1 {
+        font-size: clamp(2rem, 2rem + 0.3vw, 3rem);
+    }
+
+    header #hero-container p {
+        width: 85%;
+        font-size: clamp(0.8rem, 0.8rem + 0.1vw, 1.1rem)
+    }
+
+    .styled-btn {
+        padding: 10px 16px;
+    }
+
+
+    header #hero-navigation {
+        gap: 12px;
+    }
+
+    header #hero-navigation a {
+        font-size: clamp(0.8rem, 0.8rem + 0.2vw, 1.1rem);
+    }
+
 }
