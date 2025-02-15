@@ -374,3 +374,18 @@ header #nav-btns #btn-login a:hover {
         z-index: 97;
     }
 }
+
+
+/* /////////////////////////////////// */
+/* Header - Navigation */
+/* /////////////////////////////////// */
+
+/* ----------------------------------- */
+/* Header - Hero */
+/* ----------------------------------- */
+
+header #hero-container {
+    height: 66.6vh;
+    background-color: var(--dark-backround);
+    opacity: 0.5;
+}
