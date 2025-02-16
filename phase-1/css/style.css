@@ -406,12 +406,9 @@ header #hero-container {
     height: 66.6vh;
     background-color: var(--dark-backround);
     overflow: hidden;
-    opacity: 0.4;
 }
 
 header #hero-container h1 {
-    /* padding: 10px 0; */
-    /* margin-bottom: 10px; */
     display: block;
     font-size: clamp(3.5rem, 3.5rem + 1vw, 4.5rem);
     letter-spacing: -1.5px;
@@ -421,10 +418,10 @@ header #hero-container h1 {
     background: linear-gradient(180deg, var(--title-color-top), var(--title-color-bottom));
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
-    z-index: 3;
     opacity: 0;
     animation: appear-on-screen 1s;
     animation-fill-mode: forwards;
+    z-index: 3;
 }
 
 header #hero-container p {
@@ -434,11 +431,11 @@ header #hero-container p {
     color: var(--hero-description-color);
     line-height: 1.6;
     letter-spacing: 0.2px;
-    z-index: 3;
     opacity: 0;
     animation: appear-on-screen 1s;
     animation-fill-mode: forwards;
     animation-delay: 0.12s;
+    z-index: 3;
 }
 
 .styled-btn {
@@ -460,12 +457,11 @@ header #hero-container p {
 header #hero-navigation {
     display: flex;
     gap: 24px;
-    z-index: 3;
     opacity: 0;
-    /* font-size: clamp(1rem, 1rem + 0.2vw, 2rem); */
     animation: appear-on-screen 1s;
     animation-fill-mode: forwards;
     animation-delay: 0.24s;
+    z-index: 3;
 }
 
 header #hero-navigation a {
@@ -478,21 +474,23 @@ header #hero-container .background-element {
     position: absolute;
     top: 0;
     right: 0;
-    width: 52%;
-    height: 80vh;
-    border: 95px solid #191e2a;
+    width: 62.6vw;
+    height: 62.6vw;
+    /* width: 62.8%;
+    height: 100vh; */
+    border: 100px solid #191e2a;
     border-radius: 50%;
     z-index: 1;
 }
 
 header #hero-container #top-right {
-    transform: translate(42%, -41%);
+    transform: translate(49.7%, -52%);
 }
 
 header #hero-container #bottom-left {
     left: 0;
     bottom: 0;
-    transform: translate(-77%, 34%);
+    transform: translate(-80%, 22%);
 }
 
 header #hero-container .background-spot-light {
@@ -508,6 +506,7 @@ header #hero-container .background-spot-light {
     z-index: 2;
 }
 
+/* Hero animation */
 @keyframes appear-on-screen {
     0% {
         opacity: 0;
@@ -520,6 +519,9 @@ header #hero-container .background-spot-light {
     }
 }
 
+/* ------------------------------------ */
+/* Hero mobile screen */
+/* ------------------------------------ */
 @media screen and (max-width: 900px) {
     header #hero-container {
         gap: 20px;
@@ -539,7 +541,7 @@ header #hero-container .background-spot-light {
         padding: 10px 16px;
     }
 
-
+    /* buttons */
     header #hero-navigation {
         gap: 12px;
     }
@@ -548,4 +550,20 @@ header #hero-container .background-spot-light {
         font-size: clamp(0.8rem, 0.8rem + 0.2vw, 1.1rem);
     }
 
+    /* backround elements */
+    header #hero-container .background-element {
+        width: 151.7%;
+        height: 77vh;
+    }
+
+    header #hero-container #top-right,
+    header #hero-container .background-spot-light {
+        display: none;
+    }
+
+    header #hero-container #bottom-left {
+        left: 50%;
+        bottom: 0;
+        transform: translate(-50%, 21.5%);
+    }
 }
