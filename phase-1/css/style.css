@@ -646,3 +646,96 @@ article #about-container p {
 /* /////////////////////////////////////// */
 /* Section - About */
 /* /////////////////////////////////////// */
+
+
+
+/* --------------------------------------- */
+/* Section - How it works */
+/* --------------------------------------- */
+
+article #how-it-works-container {
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 38px;
+    height: 90vh;
+    background-color: var(--dark-backround);
+    opacity: 0.4;
+}
+
+article .section-title {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+}
+
+article #how-it-works-container h1 {
+    color: var(--title-color-top);
+}
+
+article .section-title p {
+    color: var(--hero-description-color);
+    font-size: clamp(1rem, 1rem + 0.22vw, 3rem);
+}
+
+article .cards-container {
+    display: flex;
+    gap: 38px;
+}
+
+article .cards-container span {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    top: 0;
+    left: 0;
+    transform: translate(-50%, -50%);
+    width: 51px;
+    height: 51px;
+    font-size: clamp(1rem, 1rem + 0.5vw, 3rem);
+    outline: 6px solid var(--dark-backround);
+    border-radius: 50%;
+}
+
+article .cards-container .card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 60px;
+    padding-bottom: 10px;
+    width: 300px;
+}
+
+article .cards-container .card p {
+    /* padding: 10px; */
+    text-align: center;
+    padding: 15px 0;
+    line-height: 1.6;
+    font-size: clamp(1.0rem, 1.0rem + 0.24vw, 2rem);
+}
+
+article .cards-container .asset-holder {
+    position: relative;
+    width: 200px;
+    height: 200px;
+    border-radius: 15px;
+    background-color: #f3f5f7;
+}
+
+article #how-it-works-navigation {
+    display: flex;
+    gap: 15px;
+}
+
+article #how-it-works-navigation a {
+    font-size: clamp(0.8rem, 0.8rem + 0.2vw, 1.1rem);
+    text-decoration: none;
+}
+
+/* /////////////////////////////////////// */
+/* Section - How it works */
+/* /////////////////////////////////////// */
