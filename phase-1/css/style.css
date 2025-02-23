@@ -597,6 +597,14 @@ article #about-container {
     height: auto;
 }
 
+article section:nth-child(odd) {
+    background-color: var(--text-color);
+}
+
+article section:nth-child(even) {
+    background-color: var(--dark-backround);
+}
+
 article h1 {
     font-size: clamp(2rem, 2rem + 0.4vw, 3rem);
     font-weight: 700;
@@ -888,7 +896,6 @@ article #why-us-section {
     gap: 67px;
     height: 70vh;
     /* background-color: var(--dark-backround); */
-    opacity: 0.4;
 }
 
 article #why-us-section .section-title p {
@@ -924,10 +931,76 @@ article .grid-cards-container .card-icon {
 
 article .grid-cards-container h1 {
     font-size: clamp(1.2rem, 1.3rem + 0.14vw, 3rem);
-    padding: 10px 0;
+    padding-bottom: 15px;
 }
 
 article .grid-cards-container p {
     width: 95%;
     font-size: clamp(0.8rem, 0.8rem + 0.17vw, 3rem);
+    color: #596780;
+}
+
+/* /////////////////////////////////////// */
+/* Section - download */
+/* /////////////////////////////////////// */
+
+article #download-section {
+    display: flex;
+    align-items: center;
+    height: 63vh;
+    opacity: 1;
+}
+
+article #download-holder {
+    display: flex;
+    justify-content: end;
+    width: 49%;
+}
+
+article #download-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 5px;
+    width: 83%;
+    height: 37vh;
+}
+
+article #download-content {
+    padding: 3px 0;
+}
+
+article #download-content h1 {
+    padding: 20px 0;
+    color: #fff;
+}
+
+article #download-content p {
+    width: 95%;
+    font-size: clamp(1rem, 1rem + 0.22vw, 2rem);
+    line-height: 1.5;
+}
+
+article #download-icons {
+    display: flex;
+    gap: 30px;
+}
+
+article #download-image-holder {
+    position: relative;
+    width: 51%;
+    height: 100%;
+}
+
+article #download-image-holder #image-container {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    width: 100%;
+    height: 88%;
+    border-top: 11px solid #3d414c;
+    border-left: 11px solid #3d414c;
+    border-top-left-radius: 45px;
+    overflow: hidden;
+    background-color: #0d121f;
 }
