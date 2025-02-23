@@ -739,3 +739,57 @@ article #how-it-works-navigation a {
 /* /////////////////////////////////////// */
 /* Section - How it works */
 /* /////////////////////////////////////// */
+
+article #why-us-section {
+    position: relative;
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 67px;
+    height: 70vh;
+    /* background-color: var(--dark-backround); */
+    opacity: 0.4;
+}
+
+article #why-us-section .section-title p {
+    width: 75%;
+    text-align: center;
+}
+
+article .grid-cards-container {
+    width: 65%;
+    display: grid;
+    grid-template-rows: 100px 100px;
+    grid-template-columns: 50% 50%;
+    gap: 20px;
+}
+
+article .grid-cards-container .grid-card {
+    padding: 0 10px;
+    display: flex;
+    align-items: center;
+    gap: 35px;
+}
+
+article .grid-cards-container .card-icon {
+    background-color: var(--blue-btn-backround);
+    padding: 13px;
+    /* width: 75px;
+    height: 65px; */
+    border-radius: 11px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+article .grid-cards-container h1 {
+    font-size: clamp(1.2rem, 1.3rem + 0.14vw, 3rem);
+    padding: 10px 0;
+}
+
+article .grid-cards-container p {
+    width: 95%;
+    font-size: clamp(0.8rem, 0.8rem + 0.17vw, 3rem);
+}
