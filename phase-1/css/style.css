@@ -671,7 +671,6 @@ article #how-it-works-container {
     min-height: 90vh;
     height: auto;
     background-color: var(--dark-backround);
-    opacity: 0.5;
 }
 
 article .section-title {
@@ -694,7 +693,7 @@ article #how-it-works-container h1 {
 
 article .cards-container {
     display: flex;
-    gap: 38px;
+    gap: 2vw;
 }
 
 article .cards-container .asset-container>span {
@@ -756,7 +755,6 @@ article .cards-container .asset-holder {
 }
 
 article .cards-container .asset-holder p {
-    /* padding: 0px 0; */
     font-size: inherit;
     text-align: start;
     padding: 0;
@@ -787,7 +785,6 @@ article .cards-container .asset-holder:hover .custom-searchbar>span::after {
     width: 1px;
     height: 100%;
     background-color: #040815;
-    opacity: 0;
     animation: cursor-animation 1.5s ease-in-out infinite;
 }
 
@@ -843,7 +840,6 @@ article .cards-container .asset-holder .machine-holder {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    /* background: #0d121f; */
     position: absolute;
     top: 50%;
     left: 47%;
@@ -853,6 +849,75 @@ article .cards-container .asset-holder .machine-holder {
 article .cards-container .asset-holder .machine-holder p {
     color: #2a60b7;
     font-size: clamp(0.8rem, 0.8rem + 0.1vw, 1.1rem);
+}
+
+article .card:nth-child(2):hover .asset-holder .machine-holder .machine-frame {
+    stroke-dasharray: 0 100 0;
+    stroke-dashoffset: 100;
+    animation: strokeOffset 1s linear infinite;
+}
+
+article .card:nth-child(2):hover .asset-holder .machine-holder .rotating-rollercoster-frame {
+    stroke-dasharray: 100;
+    stroke-dashoffset: 100;
+    animation: strokeDrawTwo 1.5s linear infinite;
+}
+
+article .card:nth-child(2):hover .asset-holder .machine-holder .ear-at-left {
+    stroke-dasharray: 100;
+    stroke-dashoffset: 100;
+    animation: strokeDraw 1.5s ease-in-out infinite;
+}
+
+article .card:nth-child(2):hover .asset-holder .machine-holder .eye-of-machine {
+    stroke-dasharray: 100;
+    stroke-dashoffset: 100;
+    animation: strokeDraw 1.5s ease-in-out infinite;
+}
+
+article .card:nth-child(2):hover .asset-holder .machine-holder .rotating-rollercoster {
+    stroke-dasharray: 100;
+    stroke-dashoffset: 100;
+    animation: strokeDraw 1.5s ease-in-out infinite;
+}
+
+@keyframes strokeOffset {
+    to {
+        stroke-dasharray: 90 0;
+        stroke-dashoffset: 0;
+    }
+}
+
+@keyframes strokeDraw {
+    0% {
+        stroke-dashoffset: 0;
+    }
+
+    25% {
+        stroke-dashoffset: 100;
+    }
+
+    50% {
+        stroke-dashoffset: 100;
+    }
+
+    100% {
+        stroke-dashoffset: 0;
+    }
+
+}
+
+@keyframes strokeDrawTwo {
+    0% {
+        stroke-dasharray: 90 0;
+        stroke-dashoffset: 100;
+    }
+
+    100% {
+        stroke-dasharray: 20 100;
+        stroke-dashoffset: 0;
+    }
+
 }
 
 
@@ -871,6 +936,24 @@ article .card:nth-child(3) .asset-holder p {
     color: #fff;
 }
 
+
+article .card:nth-child(3):hover .asset-holder .machine-holder .rotating-rollercoster {
+    animation: rotate 1.5s linear infinite;
+}
+
+@keyframes rotate {
+    from {
+        transform-origin: calc(100% / 2 - 1px) calc(100% / 2 + 5px);
+        rotate: 0deg;
+    }
+
+    to {
+        transform-origin: calc(100% / 2 - 0px) calc(100% / 2 + 4px);
+        rotate: 180deg;
+    }
+}
+
+
 article #how-it-works-navigation {
     display: flex;
     gap: 15px;
@@ -879,6 +962,15 @@ article #how-it-works-navigation {
 article #how-it-works-navigation a {
     font-size: clamp(0.8rem, 0.8rem + 0.2vw, 1.1rem);
     text-decoration: none;
+}
+
+@media screen and (max-width: 1000px) {
+    article .cards-container .card p {
+        width: 90%;
+        padding: 10px 0;
+        line-height: 1.6;
+        font-size: clamp(0.7rem, 0.7rem + 0.8vw, 2rem);
+    }
 }
 
 @media screen and (max-width: 900px) {
@@ -917,7 +1009,7 @@ article #how-it-works-navigation a {
         width: 72%;
         padding: 10px 0;
         line-height: 1.6;
-        font-size: clamp(0.8rem, 0.8rem + 0.6vw, 2rem);
+        font-size: clamp(0.7rem, 0.7rem + 0.1vw, 2rem);
     }
 
     article .card .asset-container span {
@@ -933,7 +1025,7 @@ article #how-it-works-navigation a {
 
 
 /* /////////////////////////////////////// */
-/* Section - How it works */
+/* Section - why us section */
 /* /////////////////////////////////////// */
 
 article #why-us-section {
@@ -951,9 +1043,9 @@ article #why-us-section {
 article .grid-cards-container {
     width: 65%;
     display: grid;
-    grid-template-rows: 100px 100px;
+    grid-template-rows: 11vh 11vh;
     grid-template-columns: 50% 50%;
-    gap: 20px;
+    gap: 60px;
 }
 
 article .grid-cards-container .grid-card {
@@ -972,6 +1064,16 @@ article .grid-cards-container .card-icon {
     align-items: center;
 }
 
+article .grid-cards-container .grid-card:hover .card-icon img {
+    scale: 1;
+    transition: scale 0.3s;
+}
+
+article .grid-cards-container .grid-card:hover .card-icon img {
+    scale: 1.4;
+    transition: scale 0.3s;
+}
+
 article .grid-cards-container h1 {
     font-size: clamp(1.2rem, 1.3rem + 0.14vw, 3rem);
     padding-bottom: 15px;
@@ -983,6 +1085,7 @@ article .grid-cards-container p {
     color: #596780;
 }
 
+
 @media screen and (max-width: 900px) {
 
     article #why-us-section {
@@ -991,7 +1094,7 @@ article .grid-cards-container p {
 
     article .grid-cards-container {
         padding-bottom: 45px;
-        grid-template-rows: 100px;
+        grid-template-rows: 11vh;
         grid-template-columns: 50%;
         gap: 30px;
     }
@@ -1064,6 +1167,16 @@ article #download-icons {
     gap: 35px;
 }
 
+article #download-icons img {
+    scale: 1;
+    transition: all 0.3s;
+}
+
+article #download-icons img:hover {
+    scale: 1.2;
+    transition: all 0.3s;
+}
+
 
 article #download-icons img {
     width: 12.8vw;
@@ -1074,6 +1187,7 @@ article #download-image-holder {
     width: 51%;
     min-height: 63vh;
     height: 100%;
+    overflow: hidden;
 }
 
 article #download-image-holder #image-container {
@@ -1089,9 +1203,21 @@ article #download-image-holder #image-container {
 }
 
 article #download-image-holder img {
-    width: auto;
-    height: auto;
-    object-fit: fill;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+@media screen and (max-width: 1000px) {
+
+    article #download-image-holder {
+        width: 50%;
+    }
+
+    article #download-image-holder #image-container {
+        width: 95%;
+        height: 75%;
+    }
 }
 
 @media screen and (max-width: 900px) {
@@ -1181,9 +1307,17 @@ article .card-location {
     justify-content: space-between;
     padding: 29px 30px;
     width: 26.6vw;
-    height: 37.7vh;
+    min-height: 37.7vh;
+    height: auto;
     border: 2px solid var(--nav-btn-color);
     border-radius: 11px;
+    transition: all 0.3s;
+}
+
+article .card-location:hover {
+    transform: translateY(-10px);
+    border-color: var(--blue-btn-backround);
+    transition: all 0.3s;
 }
 
 article .card-location h1 {
@@ -1213,10 +1347,6 @@ article .card-location p {
     border-bottom: 2px solid #e6ecf2;
 }
 
-article .card-location:nth-child(2) {
-    border-color: var(--blue-btn-backround);
-}
-
 article .card-location:nth-child(2) p {
     padding: 25px 0;
 }
@@ -1241,7 +1371,7 @@ article #locations-section .styled-btn {
 
     article #locations-holder {
         margin-top: 15px;
-        padding: 0 20px;
+        padding: 13px 20px;
         display: flex;
         justify-content: start;
         width: 100%;
@@ -1309,6 +1439,7 @@ footer nav ul {
 }
 
 footer nav ul li {
+    text-align: center;
     padding: 0 35px;
     padding-bottom: 2px;
     height: min-content;
