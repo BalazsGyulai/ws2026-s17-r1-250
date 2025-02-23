@@ -668,9 +668,10 @@ article #how-it-works-container {
     justify-content: center;
     align-items: center;
     gap: 38px;
-    height: 90vh;
+    min-height: 90vh;
+    height: auto;
     background-color: var(--dark-backround);
-    /* opacity: 0.5; */
+    opacity: 0.5;
 }
 
 article .section-title {
@@ -680,13 +681,15 @@ article .section-title {
     gap: 10px;
 }
 
-article #how-it-works-container h1 {
-    color: var(--title-color-top);
-}
-
 article .section-title p {
     color: var(--hero-description-color);
     font-size: clamp(1rem, 1rem + 0.22vw, 3rem);
+    width: 100%;
+    text-align: center;
+}
+
+article #how-it-works-container h1 {
+    color: var(--title-color-top);
 }
 
 article .cards-container {
@@ -892,6 +895,56 @@ article #how-it-works-navigation a {
     text-decoration: none;
 }
 
+@media screen and (max-width: 900px) {
+
+    article .section-title {
+        padding-top: 40px;
+        gap: 7px;
+    }
+
+    article .section-title p {
+        padding: 0 10px;
+        line-height: 1.5;
+        font-size: clamp(0.8rem, 0.8rem + 0.72vw, 1.1rem);
+    }
+
+    article #how-it-works-container {
+        padding: 10px 0;
+        gap: 0;
+    }
+
+    article .cards-container {
+        display: flex;
+        flex-direction: column;
+        gap: 30px;
+        margin-top: 65px;
+    }
+
+    article .cards-container .card {
+        flex-direction: column;
+        padding-top: 0px;
+        padding-bottom: 0px;
+    }
+
+    article .cards-container .card p {
+        /* padding: 10px; */
+        width: 72%;
+        padding: 10px 0;
+        line-height: 1.6;
+        font-size: clamp(0.8rem, 0.8rem + 0.6vw, 2rem);
+    }
+
+    article .card .asset-container span {
+        font-size: clamp(1.5rem, 1.5rem + 0.1vw, 2rem);
+    }
+
+
+    article #how-it-works-navigation {
+        padding-top: 20px;
+        padding-bottom: 40px;
+    }
+}
+
 
 /* /////////////////////////////////////// */
 /* Section - How it works */
@@ -905,13 +958,9 @@ article #why-us-section {
     justify-content: center;
     align-items: center;
     gap: 67px;
-    height: 70vh;
-    /* background-color: var(--dark-backround); */
-}
-
-article #why-us-section .section-title p {
-    width: 75%;
-    text-align: center;
+    min-height: 70vh;
+    height: auto;
+    opacity: 0.5;
 }
 
 article .grid-cards-container {
@@ -951,18 +1000,99 @@ article .grid-cards-container p {
     color: #596780;
 }
 
+@media screen and (max-width: 900px) {
+
+    article #why-us-section {
+        gap: 25px;
+    }
+
+    article .grid-cards-container {
+        padding-bottom: 45px;
+        grid-template-rows: 100px;
+        grid-template-columns: 50%;
+        gap: 30px;
+    }
+
+    article .grid-cards-container {
+        width: 100%;
+        grid-template-rows: 100px;
+        grid-template-columns: 100%;
+    }
+
+    article .grid-cards-container .grid-card {
+        padding: 0 5px;
+        gap: 15px;
+    }
+
+    article .grid-cards-container h1 {
+        font-size: clamp(1.1rem, 1.1rem + 0.43vw, 3rem);
+        padding-bottom: 15px;
+    }
+
+    article .grid-cards-container p {
+        width: 100%;
+        font-size: clamp(0.9rem, 0.9rem + 0.27vw, 3rem);
+        color: #596780;
+    }
+}
+
 /* /////////////////////////////////////// */
 /* Section - download */
 /* /////////////////////////////////////// */
 
 article #download-section {
     display: flex;
+    justify-content: end;
     align-items: center;
-    height: 63vh;
-    opacity: 1;
+    gap: 10px;
+    min-height: 63vh;
+    height: auto;
+    opacity: 0.5;
 }
 
-article #download-holder {
+article #download-container {
+    width: 40%;
+}
+
+
+article #download-section .section-title h2 {
+    width: 100%;
+    text-align: start;
+}
+
+article #download-section .section-title h1 {
+    width: 100%;
+    padding-top: 8px;
+    text-align: start;
+    color: #fff
+}
+
+article #download-section .section-title p {
+    width: 100%;
+    padding-top: 8px;
+    font-size: clamp(1rem, 1rem + 0.22vw, 2rem);
+    text-align: start;
+}
+
+article #download-icons {
+    margin-top: 60px;
+    display: flex;
+    justify-content: start;
+    gap: 35px;
+}
+
+
+article #download-icons img {
+    width: 12.8vw;
+}
+
+article #download-image-holder {
+    position: relative;
+    width: 51%;
+    height: 100%;
+}
+
+/* article #download-holder {
     display: flex;
     justify-content: end;
     width: 49%;
@@ -979,8 +1109,9 @@ article #download-container {
 
 article #download-content {
     padding: 3px 0;
-}
+} */
 
+/* 
 article #download-content h1 {
     padding: 20px 0;
     color: #fff;
@@ -990,11 +1121,11 @@ article #download-content p {
     width: 95%;
     font-size: clamp(1rem, 1rem + 0.22vw, 2rem);
     line-height: 1.5;
-}
+} */
 
-article #download-icons {
+/* article #download-icons {
     display: flex;
-    gap: 30px;
+    gap: 20px;
 }
 
 article #download-image-holder {
@@ -1014,8 +1145,75 @@ article #download-image-holder #image-container {
     border-top-left-radius: 45px;
     overflow: hidden;
     background-color: #0d121f;
+} */
+
+/* @media screen and (max-width: 900px) {
+    article #download-section {
+        flex-direction: column;
+        align-items: start;
+    }
+
+    article #download-container {
+        padding: 0 5px;
+    }
+
+    article #download-section .section-title h1 {
+        padding-top: 8px;
+        text-align: center;
+        color: #fff
+    }
+
+    article #download-section .section-title p {
+        padding-top: 8px;
+        font-size: clamp(0.9rem, 0.9rem + 0.2vw, 2rem);
+        text-align: center;
+    }
+
+    article #download-icons {
+        margin-top: 40px;
+        display: flex;
+        justify-content: center;
+        gap: 20px;
+    }
+
+    article #download-icons img {
+        width: 33vw;
+    }
+
+    article #download-image-holder {
+        margin-top: 10px;
+        padding: 28px 0;
+        display: flex;
+        justify-content: center;
+        position: relative;
+        width: 100%;
+        height: 100%;
+    }
+
+    article #download-image-holder #image-container {
+        position: relative;
+        /* right: 0;
+        bottom: 0; 
+width: 94vw;
+height: 29vh;
+border: 3px solid #3d414c;
+/* border-left: 11px solid #3d414c; */
+/* border-top-left-radius: 45px; 
+border-radius: 11px;
+overflow: hidden;
+/* background-color: #0d121f;
 }
 
+article #download-image-holder #image-container img {
+    width: 100%;
+    height: 100%;
+    object-fit: scale-down;
+}
+
+
+}
+
+*/
 /* /////////////////////////////////////// */
 /* Section - where are we */
 /* /////////////////////////////////////// */
@@ -1028,6 +1226,7 @@ article #locations-section {
     align-items: center;
     gap: 52px;
     height: 78vh;
+    display: none;
     /* opacity: 0.5; */
 }
 
@@ -1101,6 +1300,7 @@ footer {
     height: 16.5vh;
     background-color: #0d121f;
     /* opacity: 0.5; */
+    display: none;
 }
 
 footer nav {
