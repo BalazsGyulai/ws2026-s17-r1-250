@@ -4,9 +4,10 @@ import "./App.css";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
 import Informations from "./pages/Informations";
+import ShopLayout from "./pages/ShopLayout";
 
 function App() {
-  const [steps, setSteps] = useState(0);
+  const [steps, setSteps] = useState(1);
 
   const changeStepsHandler = (val) => {
     setSteps(val);
@@ -18,7 +19,9 @@ function App() {
         <Header steps={steps} changeStepsHandler={changeStepsHandler} />
 
         <main className="main">
-          <Informations />
+          {steps == 0 ? <Informations /> : ""}
+          {steps == 1 ? <ShopLayout /> : ""}
+
           {/* 
           <label className="cnr-label">
             <input type="checkbox" />
@@ -44,68 +47,7 @@ function App() {
 
           <hr />
 
-          <div className="dnd-row">
-            <div className="grid-item washer">
-              <img src="./assets/washing-machine.svg" alt="Washing Machine" />
-              <span>Washer (11 kg)</span>
-            </div>
-            <div className="grid-item dryer">
-              <img src="./assets/washing-machine.svg" alt="Drying Machine" />
-              <span>Dryer (25 kg)</span>
-            </div>
-            <div className="grid-item">
-              <img src="./assets/armchair.svg" alt="Waiting Area" />
-              <span>Waiting Area</span>
-            </div>
-            <div className="grid-item">
-              <img src="./assets/space.svg" alt="Folding Tables" />
-              <span>Folding Table</span>
-            </div>
-          </div>
-
-          <div className="grid">
-            <div className="grid-item empty"></div>
-            <div className="grid-item wall">
-              <span>Wall</span>
-            </div>
-            <div className="grid-item washer">
-              <img src="./assets/washing-machine.svg" alt="Washing Machine" />
-              <span>Washer (11 kg)</span>
-            </div>
-            <div className="grid-item dryer">
-              <img src="./assets/washing-machine.svg" alt="Drying Machine" />
-              <span>Dryer (25 kg)</span>
-            </div>
-            <div className="grid-item dryer">
-              <img src="./assets/washing-machine.svg" alt="Drying Machine" />
-              <span>Dryer (25 kg)</span>
-            </div>
-            <div className="grid-item entrance"></div>
-            <div className="grid-item empty"></div>
-            <div className="grid-item empty"></div>
-            <div className="grid-item empty"></div>
-            <div className="grid-item empty"></div>
-            <div className="grid-item empty"></div>
-            <div className="grid-item empty"></div>
-            <div className="grid-item empty"></div>
-            <div className="grid-item empty"></div>
-            <div className="grid-item empty"></div>
-            <div className="grid-item empty"></div>
-            <div className="grid-item empty"></div>
-            <div className="grid-item empty"></div>
-            <div className="grid-item empty"></div>
-            <div className="grid-item empty"></div>
-            <div className="grid-item empty"></div>
-            <div className="grid-item empty"></div>
-            <div className="grid-item empty"></div>
-            <div className="grid-item empty"></div>
-            <div className="grid-item empty"></div>
-            <div className="grid-item empty"></div>
-            <div className="grid-item empty"></div>
-            <div className="grid-item empty"></div>
-            <div className="grid-item empty"></div>
-            <div className="grid-item empty"></div>
-          </div>
+          
 
           <hr />
 
