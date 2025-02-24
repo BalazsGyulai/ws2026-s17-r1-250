@@ -2,12 +2,20 @@ import { useState } from "react";
 import viteLogo from "/vite.svg";
 import "./App.css";
 import Header from "./components/Header";
+import Footer from "./components/Footer";
 
 function App() {
+  const [steps, setSteps] = useState(0);
+
+  const changeStepsHandler = (val) => {
+    setSteps(val);
+    console.log(val);
+  };
+
   return (
     <>
       <article class="container">
-        <Header />
+        <Header steps={steps} changeStepsHandler={changeStepsHandler} />
 
         <main class="main">
           <div class="input-row">
@@ -135,12 +143,7 @@ function App() {
           </div>
         </main>
 
-        <footer class="footer">
-          <button class="btn" disabled>
-            Back
-          </button>
-          <button class="btn">Next</button>
-        </footer>
+        <Footer steps={steps} changeStepsHandler={changeStepsHandler} />
       </article>
     </>
   );
