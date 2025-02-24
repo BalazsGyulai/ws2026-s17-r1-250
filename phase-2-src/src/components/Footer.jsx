@@ -18,15 +18,15 @@ const Footer = (props) => {
   };
 
   return (
-    <footer class="footer">
+    <footer className="footer">
       <button
-        class="btn"
+        className="btn"
         onClick={PrevStepHandler}
         disabled={props.steps == 0 ? true : false}
       >
         Back
       </button>
-      <button class="btn" onClick={NextStepHandler}>
+      <button className="btn" onClick={NextStepHandler}>
         Next
       </button>
     </footer>
