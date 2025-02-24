@@ -1,9 +1,20 @@
-import React from "react";
+import React, { useState } from "react";
 import check from "../assets/check.svg";
 import maximize from "../assets/maximize.svg";
+import minimize from "../assets/minimize.svg";
 
 const Header = () => {
-  const FullScreenHandler = () => {};
+  const [fullscreen, setFullscreen] = useState(false); // for changing the fullsize icon
+
+  const FullScreenHandler = () => {
+    if (!document.fullscreenElement) {
+      document.documentElement.requestFullscreen();
+      setFullscreen(!fullscreen);
+    } else if (document.exitFullscreen) {
+      document.exitFullscreen();
+      setFullscreen(!fullscreen);
+    }
+  };
 
   return (
     <header className="header">
@@ -23,7 +34,7 @@ const Header = () => {
       </div>
 
       <button className="fullscreen-btn" onClick={FullScreenHandler}>
-        <img src={maximize} alt="Maximize" />
+        <img src={fullscreen ? minimize : maximize} alt="Maximize" />
       </button>
     </header>
   );
