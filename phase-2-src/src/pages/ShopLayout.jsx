@@ -7,7 +7,7 @@ const ShopLayout = () => {
   const [map_layout, setMap_layout] = useState([
     [null, null, null, null, null],
     [null, null, null, null, null],
-    [null, null, "wall", null, null],
+    [null, null, null, null, null],
     [null, null, null, null, null],
     [null, null, null, null, null],
     [null, null, null, null, null]
@@ -29,21 +29,66 @@ const ShopLayout = () => {
     }
 
     return GRID_MAP.map((row, y) =>
-      row.map((column, x) => (
-        <div
-          key={`${y}${x}`}
-          className="grid-item empty"
-          onDragEnter={(e) => dragEnterHandler(e, x, y)}
-          onDragLeave={(e) => dragLeaveHandler(e)}
-          onDragOver={(e) => dragOverHandler(e)}
-        ></div>
-      ))
+      row.map((column, x) => {
+        if (column == "Washer (8 kg)") {
+          return (
+            <div key={`${y}${x}`} className="grid-item washer">
+              <img src={washingMachine} alt="Washing Machine" />
+              <span>Washer (8 kg)</span>
+            </div>
+          );
+        } else if (column == "Washer (11 kg)") {
+          return (
+            <div key={`${y}${x}`} className="grid-item washer">
+              <img src={washingMachine} alt="Washing Machine" />
+              <span>Washer (11 kg)</span>
+            </div>
+          );
+        } else if (column == "Dryer (18 kg)") {
+          return (
+            <div key={`${y}${x}`} className="grid-item dryer">
+              <img src={washingMachine} alt="Drying Machine" />
+              <span>Dryer (18 kg)</span>
+            </div>
+          );
+        } else if (column == "Dryer (25 kg)") {
+          return (
+            <div key={`${y}${x}`} className="grid-item dryer">
+              <img src={washingMachine} alt="Drying Machine" />
+              <span>Dryer (25 kg)</span>
+            </div>
+          );
+        } else if (column == "Folding Table") {
+          return (
+            <div key={`${y}${x}`} className="grid-item">
+              <img src={space} alt="Folding Tables" />
+              <span>Folding Table</span>
+            </div>
+          );
+        } else if (column == "Waiting Area") {
+          return (
+            <div key={`${y}${x}`} className="grid-item">
+              <img src={armchair} alt="Waiting Area" />
+              <span>Waiting Area</span>
+            </div>
+          );
+        } else {
+          return (
+            <div
+              key={`${y}${x}`}
+              className="grid-item empty"
+              onDragEnter={(e) => dragEnterHandler(e, x, y)}
+              onDragLeave={(e) => dragLeaveHandler(e)}
+              onDragOver={(e) => dragOverHandler(e)}
+            ></div>
+          );
+        }
+      })
     );
   };
 
   const dragStartHandler = (e, name) => {
     dragElement = name;
-    console.log(dragElement);
   };
 
   const dragOverHandler = (e) => {
@@ -56,8 +101,6 @@ const ShopLayout = () => {
     dragEnter.y = y;
 
     e.target.style.opacity = 0.25;
-
-    console.log(dragEnter);
   };
 
   const dragLeaveHandler = (e) => {
@@ -74,7 +117,11 @@ const ShopLayout = () => {
 
         for (let x = 0; x < map_layout[y].length; x++) {
           if (x == dragEnter.x && y == dragEnter.y) {
-            if (isThereWallBesideMe()) {
+            if (
+              isThereWallBesideMe() ||
+              dragElement == "Folding Table" ||
+              dragElement == "Waiting Area"
+            ) {
               row.push(dragElement);
             } else {
               row.push(map_layout[y][x]);
@@ -87,6 +134,7 @@ const ShopLayout = () => {
         nextMap_Layout.push(row);
       }
 
+      setMap_layout(nextMap_Layout);
       console.log(nextMap_Layout);
     }
   };
@@ -130,23 +178,48 @@ const ShopLayout = () => {
           <img src={washingMachine} alt="Washing Machine" />
           <span>Washer (8 kg)</span>
         </div>
-        <div className="grid-item washer" draggable={true}>
+        <div
+          className="grid-item washer"
+          onDragStart={(e) => dragStartHandler(e, "Washer (11 kg)")}
+          onDragEnd={() => dragEndHandler()}
+          draggable={true}
+        >
           <img src={washingMachine} alt="Washing Machine" />
           <span>Washer (11 kg)</span>
         </div>
-        <div className="grid-item dryer" draggable={true}>
+        <div
+          className="grid-item dryer"
+          onDragStart={(e) => dragStartHandler(e, "Dryer (18 kg)")}
+          onDragEnd={() => dragEndHandler()}
+          draggable={true}
+        >
           <img src={washingMachine} alt="Drying Machine" />
           <span>Dryer (18 kg)</span>
         </div>
-        <div className="grid-item dryer" draggable={true}>
+        <div
+          className="grid-item dryer"
+          onDragStart={(e) => dragStartHandler(e, "Dryer (25 kg)")}
+          onDragEnd={() => dragEndHandler()}
+          draggable={true}
+        >
           <img src={washingMachine} alt="Drying Machine" />
           <span>Dryer (25 kg)</span>
         </div>
-        <div className="grid-item" draggable={true}>
+        <div
+          className="grid-item"
+          onDragStart={(e) => dragStartHandler(e, "Folding Table")}
+          onDragEnd={() => dragEndHandler()}
+          draggable={true}
+        >
           <img src={space} alt="Folding Tables" />
           <span>Folding Table</span>
         </div>
-        <div className="grid-item" draggable={true}>
+        <div
+          className="grid-item"
+          onDragStart={(e) => dragStartHandler(e, "Waiting Area")}
+          onDragEnd={() => dragEndHandler()}
+          draggable={true}
+        >
           <img src={armchair} alt="Waiting Area" />
           <span>Waiting Area</span>
         </div>
