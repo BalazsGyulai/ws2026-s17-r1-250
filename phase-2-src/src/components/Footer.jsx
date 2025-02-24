@@ -1,11 +1,17 @@
-import React from "react";
+import React, { useContext } from "react";
+import DataManage from "../context/DataContext";
 
 const Footer = (props) => {
+  const { informationValidation } = useContext(DataManage);
   const NextStepHandler = () => {
-    const nextValue = props.steps + 1;
+    const informationValid = informationValidation();
 
-    if (nextValue < 4) {
-      props.changeStepsHandler(nextValue);
+    if (informationValid) {
+      const nextValue = props.steps + 1;
+
+      if (nextValue < 4) {
+        props.changeStepsHandler(nextValue);
+      }
     }
   };
 
