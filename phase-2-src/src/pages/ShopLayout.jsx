@@ -169,9 +169,7 @@ const ShopLayout = () => {
               onDragOver={(e) => _dragOverHandler(e)}
               onClick={() => _clicksHandler(x, y)}
               onContextMenu={(e) => _addEntranceToTile(e, x, y)}
-            >
-              <span>Wall</span>
-            </GridItem>
+            ></GridItem>
           );
         } else {
           return (
