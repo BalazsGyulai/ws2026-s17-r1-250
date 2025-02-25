@@ -11,6 +11,7 @@ import Export from "./pages/Export";
 
 function App() {
   const { steps, changeStepsHandler } = useContext(DataManage);
+
   return (
     <>
       <article className="container">

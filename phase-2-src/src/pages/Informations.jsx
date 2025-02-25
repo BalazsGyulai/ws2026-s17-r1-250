@@ -20,7 +20,8 @@ const Informations = () => {
     openfrom,
     changeOpenfrom,
     opento,
-    changeOpento
+    changeOpento,
+    validateFirstPage
   } = useContext(DataManage);
 
   //---------------------------
@@ -79,7 +80,9 @@ const Informations = () => {
           <input
             type="text"
             id="input-1"
-            className={_nameValid == false ? `error` : ``}
+            className={
+              validateFirstPage.tried == true && !_nameValid ? `error` : ``
+            }
             value={name.value}
             minLength={3}
             maxLength={32}
@@ -87,7 +90,7 @@ const Informations = () => {
             autoComplete={"input-1"}
             required
           />
-          {!_nameValid && name.valid != null ? (
+          {validateFirstPage.tried == true && !_nameValid ? (
             <span className="input-error">
               {name.value != ""
                 ? name.value.length < 3
@@ -108,13 +111,17 @@ const Informations = () => {
           rows="5"
           required
           value={description.value}
-          className={_descriptionValid == false ? `error` : ``}
+          className={
+            validateFirstPage.tried == true && _descriptionValid == false
+              ? `error`
+              : ``
+          }
           autoComplete={"input-2"}
           minLength={10}
           maxLength={256}
           onChange={(e) => changeDescription(e)}
         ></textarea>
-        {!_descriptionValid && description.valid != null ? (
+        {validateFirstPage.tried == true && !_descriptionValid ? (
           <span className="input-error">
             {description.value != ""
               ? description.value.length < 10
@@ -136,12 +143,16 @@ const Informations = () => {
             value={postalCode.value}
             minLength={4}
             maxLength={4}
-            className={_postalCode == false ? `error` : ``}
+            className={
+              validateFirstPage.tried == true && _postalCode == false
+                ? `error`
+                : ``
+            }
             onChange={(e) => changePostalCode(e)}
             autoComplete={"input-3"}
             required
           />
-          {!_postalCode && postalCode.valid != null ? (
+          {validateFirstPage.tried == true && !_postalCode ? (
             <span className="input-error">
               {postalCode.value != ""
                 ? postalCode.value.length < 4
@@ -161,12 +172,14 @@ const Informations = () => {
             value={city.value}
             minLength={3}
             maxLength={32}
-            className={_city == false ? `error` : ``}
+            className={
+              validateFirstPage.tried == true && _city == false ? `error` : ``
+            }
             onChange={(e) => changecity(e)}
             autoComplete={"input-4"}
             required
           />
-          {!_city && city.valid != null ? (
+          {validateFirstPage.tried == true && !_city ? (
             <span className="input-error">
               {city.value != ""
                 ? city.value.length < 3
@@ -186,12 +199,16 @@ const Informations = () => {
             value={address.value}
             minLength={5}
             maxLength={128}
-            className={_address == false ? `error` : ``}
+            className={
+              validateFirstPage.tried == true && _address == false
+                ? `error`
+                : ``
+            }
             onChange={(e) => changeAddress(e)}
             autoComplete={"input-5"}
             required
           />
-          {!_address && address.valid != null ? (
+          {validateFirstPage.tried == true && !_address ? (
             <span className="input-error">
               {address.value != ""
                 ? address.value.length < 5
@@ -212,16 +229,18 @@ const Informations = () => {
         <label for="select">Open at</label>
         <select
           id="select"
-          className={_openat == false ? `error` : ``}
+          className={
+            validateFirstPage.tried == true && _openat == false ? `error` : ``
+          }
           onChange={(e) => changeOpenat(e)}
-          defaultValue={openat.value}
+          value={openat.value}
         >
           <option value="Every day">Every day</option>
           <option value="Weekdays">Weekdays</option>
           <option value="Weekends">Weekends</option>
         </select>
 
-        {!_openat && openat.valid != null ? (
+        {validateFirstPage.tried == true && !_openat ? (
           <span className="input-error">
             {openat.value != "" ? `Values must match` : `Required`}
           </span>
@@ -237,12 +256,16 @@ const Informations = () => {
             type="time"
             id="input-5"
             value={openfrom.value}
-            className={_openfrom == false ? `error` : ``}
+            className={
+              validateFirstPage.tried == true && _openfrom == false
+                ? `error`
+                : ``
+            }
             onChange={(e) => changeOpenfrom(e)}
             autoComplete={"input-5"}
             required
           />
-          {!_openfrom && openfrom.valid != null ? (
+          {validateFirstPage.tried == true && !_openfrom ? (
             <span className="input-error">
               {openfrom.value != "" ? `Must choose valid time` : `Required`}
             </span>
@@ -256,12 +279,14 @@ const Informations = () => {
             type="time"
             id="input-6"
             value={opento.value}
-            className={_opento == false ? `error` : ``}
+            className={
+              validateFirstPage.tried == true && _opento == false ? `error` : ``
+            }
             onChange={(e) => changeOpento(e)}
             autoComplete={"input-6"}
             required
           />
-          {!_opento && opento.valid != null ? (
+          {validateFirstPage.tried == true && !_opento ? (
             <span className="input-error">
               {opento.value != "" ? `Must choose valid time` : `Required`}
             </span>

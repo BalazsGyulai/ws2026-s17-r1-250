@@ -32,10 +32,18 @@ export function Data({ children }) {
     [null, null, null, null, null],
     [null, null, null, null, null]
   ]);
+  const [validateFirstPage, setValidateFirstPage] = useState({
+    page: false,
+    tried: false
+  });
   const [validateSecondPage, setValidateSecondPage] = useState({
     page: false,
     tried: false
   });
+
+  const changeValidationFirstPage = (val) => {
+    setValidateFirstPage(val);
+  };
 
   const resetFormFields = () => {
     setName({ value: "", valid: null });
@@ -114,89 +122,73 @@ export function Data({ children }) {
   const changeNameHandler = (e) => {
     setName((prevName) => ({ ...prevName, value: e.target.value }));
 
-    if (name.valid != null) {
-      setName((prevName) => ({
-        ...prevName,
-        valid: CheckLengthValidation(name.value, 3, 32)
-      }));
-    }
+    setName((prevName) => ({
+      ...prevName,
+      valid: CheckLengthValidation(name.value, 3, 32)
+    }));
   };
 
   const changeDescription = (e) => {
     setDescription((prevState) => ({ ...prevState, value: e.target.value }));
 
-    if (description.valid != null) {
-      setDescription((prevState) => ({
-        ...prevState,
-        valid: CheckLengthValidation(description.value, 10, 256)
-      }));
-    }
+    setDescription((prevState) => ({
+      ...prevState,
+      valid: CheckLengthValidation(description.value, 10, 256)
+    }));
   };
 
   const changePostalCode = (e) => {
     setPostalCode((prevState) => ({ ...prevState, value: e.target.value }));
 
-    if (postalCode.valid != null) {
-      setPostalCode((prevState) => ({
-        ...prevState,
-        valid: CheckLengthValidation(postalCode.value, 4, 4)
-      }));
-    }
+    setPostalCode((prevState) => ({
+      ...prevState,
+      valid: CheckLengthValidation(postalCode.value, 4, 4)
+    }));
   };
 
   const changecity = (e) => {
     setcity((prevState) => ({ ...prevState, value: e.target.value }));
 
-    if (city.valid != null) {
-      setcity((prevState) => ({
-        ...prevState,
-        valid: CheckLengthValidation(city.value, 3, 32)
-      }));
-    }
+    setcity((prevState) => ({
+      ...prevState,
+      valid: CheckLengthValidation(city.value, 3, 32)
+    }));
   };
 
   const changeAddress = (e) => {
     setaddress((prevState) => ({ ...prevState, value: e.target.value }));
 
-    if (address.valid != null) {
-      setaddress((prevState) => ({
-        ...prevState,
-        valid: CheckLengthValidation(address.value, 5, 128)
-      }));
-    }
+    setaddress((prevState) => ({
+      ...prevState,
+      valid: CheckLengthValidation(address.value, 5, 128)
+    }));
   };
 
   const changeOpenat = (e) => {
     setopenat((prevState) => ({ ...prevState, value: e.target.value }));
 
-    if (openat.valid != null) {
-      setopenat((prevState) => ({
-        ...prevState,
-        valid: CheckSelectValues(e.target.value)
-      }));
-    }
+    setopenat((prevState) => ({
+      ...prevState,
+      valid: CheckSelectValues(e.target.value)
+    }));
   };
 
   const changeOpenfrom = (e) => {
     setopenfrom((prevState) => ({ ...prevState, value: e.target.value }));
 
-    if (openfrom.valid != null) {
-      setopenfrom((prevState) => ({
-        ...prevState,
-        valid: CheckLengthValidation(openfrom.value, 1, 5)
-      }));
-    }
+    setopenfrom((prevState) => ({
+      ...prevState,
+      valid: CheckLengthValidation(openfrom.value, 1, 5)
+    }));
   };
 
   const changeOpento = (e) => {
     setopento((prevState) => ({ ...prevState, value: e.target.value }));
 
-    if (opento.valid != null) {
-      setopento((prevState) => ({
-        ...prevState,
-        valid: CheckLengthValidation(opento.value, 1, 5)
-      }));
-    }
+    setopento((prevState) => ({
+      ...prevState,
+      valid: CheckLengthValidation(opento.value, 1, 5)
+    }));
   };
 
   // for the three static value
@@ -214,62 +206,76 @@ export function Data({ children }) {
     return false;
   };
 
+  const checkFirstPageValidation = () => {
+    setName((prevName) => ({
+      ...prevName,
+      valid: CheckLengthValidation(name.value, 3, 32)
+    }));
+
+    setDescription((prevState) => ({
+      ...prevState,
+      valid: CheckLengthValidation(description.value, 10, 256)
+    }));
+
+    setPostalCode((prevState) => ({
+      ...prevState,
+      valid: CheckLengthValidation(postalCode.value, 4, 4)
+    }));
+
+    setcity((prevState) => ({
+      ...prevState,
+      valid: CheckLengthValidation(city.value, 3, 32)
+    }));
+
+    setaddress((prevState) => ({
+      ...prevState,
+      valid: CheckLengthValidation(address.value, 5, 128)
+    }));
+
+    setopenat((prevState) => ({
+      ...prevState,
+      valid: CheckSelectValues(openat.value)
+    }));
+
+    setopenfrom((prevState) => ({
+      ...prevState,
+      valid: CheckLengthValidation(openfrom.value, 1, 5)
+    }));
+
+    setopento((prevState) => ({
+      ...prevState,
+      valid: CheckLengthValidation(opento.value, 1, 5)
+    }));
+  };
+
   // when hitting the next button it validates
   const informationValidation = () => {
-    if (steps == ``) {
-      setName((prevName) => ({
-        ...prevName,
-        valid: CheckLengthValidation(name.value, 3, 32)
-      }));
-
-      setDescription((prevState) => ({
-        ...prevState,
-        valid: CheckLengthValidation(description.value, 10, 256)
-      }));
-
-      setPostalCode((prevState) => ({
-        ...prevState,
-        valid: CheckLengthValidation(postalCode.value, 4, 4)
-      }));
-
-      setcity((prevState) => ({
-        ...prevState,
-        valid: CheckLengthValidation(city.value, 3, 32)
-      }));
-
-      setaddress((prevState) => ({
-        ...prevState,
-        valid: CheckLengthValidation(address.value, 5, 128)
-      }));
-
-      setopenat((prevState) => ({
-        ...prevState,
-        valid: CheckSelectValues(openat.value)
-      }));
-
-      setopenfrom((prevState) => ({
-        ...prevState,
-        valid: CheckLengthValidation(openfrom.value, 1, 5)
-      }));
-
-      setopento((prevState) => ({
-        ...prevState,
-        valid: CheckLengthValidation(opento.value, 1, 5)
-      }));
-
+    if (steps == 0) {
       // when everything is right it allows to go another page
+      checkFirstPageValidation();
+
+      changeValidationFirstPage((prevState) => ({ ...prevState, tried: true }));
+
       if (
-        name.valid &&
-        description.valid &&
-        postalCode.valid &&
-        city.valid &&
-        address.valid &&
-        openat.valid &&
-        openfrom &&
-        opento
+        CheckLengthValidation(name.value, 3, 32) &&
+        CheckLengthValidation(description.value, 10, 256) &&
+        CheckLengthValidation(postalCode.value, 4, 4) &&
+        CheckLengthValidation(city.value, 3, 32) &&
+        CheckLengthValidation(address.value, 5, 128) &&
+        CheckSelectValues(openat.value) &&
+        CheckLengthValidation(openfrom.value, 1, 5) &&
+        CheckLengthValidation(opento.value, 1, 5)
       ) {
+        changeValidationFirstPage((prevState) => ({
+          ...prevState,
+          page: true
+        }));
         return true;
       } else {
+        changeValidationFirstPage((prevState) => ({
+          ...prevState,
+          page: false
+        }));
         return false;
       }
     } else if (steps == 1) {
@@ -340,6 +346,8 @@ export function Data({ children }) {
         map_layout,
         changeMap_layout,
         isThereWallBesideMe,
+        validateFirstPage,
+        changeValidationFirstPage,
         validateSecondPage,
         validateBoard,
         extras,
