@@ -6,6 +6,7 @@ import Header from "./components/Header";
 import Footer from "./components/Footer";
 import Informations from "./pages/Informations";
 import ShopLayout from "./pages/ShopLayout";
+import Extras from "./pages/Extras";
 
 function App() {
   const { steps, changeStepsHandler } = useContext(DataManage);
@@ -17,6 +18,7 @@ function App() {
         <main className="main">
           {steps == 0 ? <Informations /> : ""}
           {steps == 1 ? <ShopLayout /> : ""}
+          {steps == 2 ? <Extras /> : ""}
 
           {/* 
           <label className="cnr-label">

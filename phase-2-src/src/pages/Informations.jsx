@@ -209,10 +209,9 @@ const Informations = () => {
           id="select"
           className={_openat == false ? `error` : ``}
           onChange={(e) => changeOpenat(e)}
+          defaultValue={"Every day"}
         >
-          <option value="Every day" selected>
-            Every day
-          </option>
+          <option value="Every day">Every day</option>
           <option value="Weekdays">Weekdays</option>
           <option value="Weekends">Weekends</option>
         </select>

@@ -4,7 +4,7 @@ const DataManage = createContext();
 
 export function Data({ children }) {
   // global
-  const [steps, setSteps] = useState(1);
+  const [steps, setSteps] = useState(2);
   // informations page
   const [name, setName] = useState({ value: "", valid: null });
   const [description, setDescription] = useState({ value: "", valid: null });
@@ -14,6 +14,15 @@ export function Data({ children }) {
   const [openat, setopenat] = useState({ value: "Every day", valid: null });
   const [openfrom, setopenfrom] = useState({ value: "", valid: null });
   const [opento, setopento] = useState({ value: "", valid: null });
+  const [extras, setExtras] = useState({
+    freeWiFi: false,
+    accessibleEntry: false,
+    loungeArea: false,
+    backroundMusic: false,
+    customerService: false,
+    parking: "Easy"
+  });
+
   // shop layout page
   const [map_layout, setMap_layout] = useState([
     [null, null, null, null, null],
@@ -233,6 +242,8 @@ export function Data({ children }) {
       }
     } else if (steps == 1) {
       return validateBoard();
+    } else if (steps == 2) {
+      return true;
     }
   };
 
@@ -266,6 +277,11 @@ export function Data({ children }) {
     return true;
   };
 
+  const changeExtras = (newState) => {
+    setExtras(newState);
+    console.log(extras);
+  };
+
   return (
     <DataManage.Provider
       value={{
@@ -294,7 +310,9 @@ export function Data({ children }) {
         changeMap_layout,
         isThereWallBesideMe,
         validateSecondPage,
-        validateBoard
+        validateBoard,
+        extras,
+        changeExtras
       }}
     >
       {children}
