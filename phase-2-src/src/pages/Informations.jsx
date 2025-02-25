@@ -80,6 +80,7 @@ const Informations = () => {
             type="text"
             id="input-1"
             className={_nameValid == false ? `error` : ``}
+            value={name.value}
             minLength={3}
             maxLength={32}
             onChange={(e) => changeNameHandler(e)}
@@ -106,6 +107,7 @@ const Informations = () => {
           id="textarea"
           rows="5"
           required
+          value={description.value}
           className={_descriptionValid == false ? `error` : ``}
           autoComplete={"input-2"}
           minLength={10}
@@ -131,6 +133,7 @@ const Informations = () => {
           <input
             type="number"
             id="input-3"
+            value={postalCode.value}
             minLength={4}
             maxLength={4}
             className={_postalCode == false ? `error` : ``}
@@ -155,6 +158,7 @@ const Informations = () => {
           <input
             type="text"
             id="input-4"
+            value={city.value}
             minLength={3}
             maxLength={32}
             className={_city == false ? `error` : ``}
@@ -179,6 +183,7 @@ const Informations = () => {
           <input
             type="text"
             id="input-5"
+            value={address.value}
             minLength={5}
             maxLength={128}
             className={_address == false ? `error` : ``}
@@ -209,7 +214,7 @@ const Informations = () => {
           id="select"
           className={_openat == false ? `error` : ``}
           onChange={(e) => changeOpenat(e)}
-          defaultValue={"Every day"}
+          defaultValue={openat.value}
         >
           <option value="Every day">Every day</option>
           <option value="Weekdays">Weekdays</option>
@@ -231,6 +236,7 @@ const Informations = () => {
           <input
             type="time"
             id="input-5"
+            value={openfrom.value}
             className={_openfrom == false ? `error` : ``}
             onChange={(e) => changeOpenfrom(e)}
             autoComplete={"input-5"}
@@ -249,6 +255,7 @@ const Informations = () => {
           <input
             type="time"
             id="input-6"
+            value={opento.value}
             className={_opento == false ? `error` : ``}
             onChange={(e) => changeOpento(e)}
             autoComplete={"input-6"}

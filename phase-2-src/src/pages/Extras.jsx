@@ -26,6 +26,7 @@ const Extras = () => {
         <input
           type="checkbox"
           onClick={() => changeExtrasHandler("freeWiFi", !extras.freeWiFi)}
+          defaultChecked={extras.freeWiFi}
         />
         <span>Free Wi-Fi</span>
       </label>
@@ -35,6 +36,7 @@ const Extras = () => {
           onClick={() =>
             changeExtrasHandler("accessibleEntry", !extras.accessibleEntry)
           }
+          defaultChecked={extras.accessibleEntry}
         />
         <span>Accessible entry</span>
       </label>
@@ -42,6 +44,7 @@ const Extras = () => {
         <input
           type="checkbox"
           onClick={() => changeExtrasHandler("loungeArea", !extras.loungeArea)}
+          defaultChecked={extras.loungeArea}
         />
         <span>Lounge Area</span>
       </label>
@@ -51,6 +54,7 @@ const Extras = () => {
           onClick={() =>
             changeExtrasHandler("backroundMusic", !extras.backroundMusic)
           }
+          defaultChecked={extras.backroundMusic}
         />
         <span>Backround music</span>
       </label>
@@ -60,6 +64,7 @@ const Extras = () => {
           onClick={() =>
             changeExtrasHandler("customerService", !extras.customerService)
           }
+          defaultChecked={extras.customerService}
         />
         <span>Personal customer service</span>
       </label>
@@ -72,7 +77,7 @@ const Extras = () => {
             type="radio"
             name="radio-test"
             onClick={() => changeExtrasHandler("parking", "Easy")}
-            defaultChecked
+            defaultChecked={extras.parking === "Easy" ? true : false}
           />
           <span>Easy</span>
         </label>
@@ -81,6 +86,7 @@ const Extras = () => {
             type="radio"
             name="radio-test"
             onClick={() => changeExtrasHandler("parking", "Medium")}
+            defaultChecked={extras.parking === "Medium" ? true : false}
           />
           <span>Medium</span>
         </label>
@@ -89,6 +95,7 @@ const Extras = () => {
             type="radio"
             name="radio-test"
             onClick={() => changeExtrasHandler("parking", "Hard")}
+            defaultChecked={extras.parking === "Hard" ? true : false}
           />
           <span>Hard</span>
         </label>

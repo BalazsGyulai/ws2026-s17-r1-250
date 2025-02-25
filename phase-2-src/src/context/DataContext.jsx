@@ -4,7 +4,7 @@ const DataManage = createContext();
 
 export function Data({ children }) {
   // global
-  const [steps, setSteps] = useState(2);
+  const [steps, setSteps] = useState(3);
   // informations page
   const [name, setName] = useState({ value: "", valid: null });
   const [description, setDescription] = useState({ value: "", valid: null });
@@ -36,6 +36,38 @@ export function Data({ children }) {
     page: false,
     tried: false
   });
+
+  const resetFormFields = () => {
+    setName({ value: "", valid: null });
+    setDescription({ value: "", valid: null });
+    setPostalCode({ value: "", valid: null });
+    setcity({ value: "", valid: null });
+    setaddress({ value: "", valid: null });
+    setopenat({ value: "", valid: null });
+    setopenfrom({ value: "", valid: null });
+    setopento({ value: "", valid: null });
+    setExtras({
+      freeWiFi: false,
+      accessibleEntry: false,
+      loungeArea: false,
+      backroundMusic: false,
+      customerService: false,
+      parking: "Easy"
+    });
+    setMap_layout([
+      [null, null, null, null, null],
+      [null, null, null, null, null],
+      [null, null, null, null, null],
+      [null, null, null, null, null],
+      [null, null, null, null, null],
+      [null, null, null, null, null]
+    ]);
+    setValidateSecondPage({
+      page: false,
+      tried: false
+    });
+    setSteps(0);
+  };
 
   const changeStepsHandler = (val) => {
     setSteps(val);
@@ -279,7 +311,6 @@ export function Data({ children }) {
 
   const changeExtras = (newState) => {
     setExtras(newState);
-    console.log(extras);
   };
 
   return (
@@ -312,7 +343,8 @@ export function Data({ children }) {
         validateSecondPage,
         validateBoard,
         extras,
-        changeExtras
+        changeExtras,
+        resetFormFields
       }}
     >
       {children}

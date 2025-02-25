@@ -7,6 +7,7 @@ import Footer from "./components/Footer";
 import Informations from "./pages/Informations";
 import ShopLayout from "./pages/ShopLayout";
 import Extras from "./pages/Extras";
+import Export from "./pages/Export";
 
 function App() {
   const { steps, changeStepsHandler } = useContext(DataManage);
@@ -19,6 +20,7 @@ function App() {
           {steps == 0 ? <Informations /> : ""}
           {steps == 1 ? <ShopLayout /> : ""}
           {steps == 2 ? <Extras /> : ""}
+          {steps == 3 ? <Export /> : ""}
 
           {/* 
           <label className="cnr-label">
@@ -55,7 +57,11 @@ function App() {
           </div> */}
         </main>
 
-        <Footer steps={steps} changeStepsHandler={changeStepsHandler} />
+        {steps != 3 ? (
+          <Footer steps={steps} changeStepsHandler={changeStepsHandler} />
+        ) : (
+          ""
+        )}
       </article>
     </>
   );
