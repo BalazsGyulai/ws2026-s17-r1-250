@@ -1,15 +1,22 @@
 import React from "react";
+import check from "../assets/check.svg";
 
-const NavButton = () => {
+const NavButton = (props) => {
   return (
     <button
       className={`step ${
-        props.steps == 0 ? `current` : 0 < props.steps ? `done` : `dashed`
+        props.steps == props.content - 1
+          ? `current`
+          : props.content - 1 < props.steps
+          ? `done`
+          : `dashed`
       }`}
-      disabled={props.steps == 3 ? true : false}
-      onClick={() => props.changeStepsHandler(0)}
+      disabled={
+        props.steps == 3 ? true : props.content - 1 < props.steps ? false : true
+      }
+      onClick={props.onClick}
     >
-      {props.steps == 3 ? <img src={check} alt="Check" /> : `1`}
+      {props.steps == 3 ? <img src={check} alt="Check" /> : `${props.content}`}
     </button>
   );
 };

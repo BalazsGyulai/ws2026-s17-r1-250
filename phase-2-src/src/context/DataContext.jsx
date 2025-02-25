@@ -8,7 +8,7 @@ export function Data({ children }) {
   // ----------------------------------------------
 
   // general
-  const [steps, setSteps] = useState(1);
+  const [steps, setSteps] = useState(0);
 
   // informations page
   const [name, setName] = useState({ value: "", valid: null });
