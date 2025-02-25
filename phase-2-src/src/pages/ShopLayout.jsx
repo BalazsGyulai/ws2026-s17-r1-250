@@ -1,17 +1,27 @@
-import React, { useState } from "react";
+import React, { useState, useContext, useEffect } from "react";
+import DataManage from "../context/DataContext";
 import washingMachine from "../assets/washing-machine.svg";
 import space from "../assets/space.svg";
 import armchair from "../assets/armchair.svg";
+import alert from "../assets/alert.svg";
 
 const ShopLayout = () => {
-  const [map_layout, setMap_layout] = useState([
-    [null, null, null, null, null],
-    [null, null, null, null, null],
-    [null, null, null, null, null],
-    [null, null, null, null, null],
-    [null, null, null, null, null],
-    [null, null, null, null, null]
-  ]);
+  const {
+    informationValidation,
+    map_layout,
+    changeMap_layout,
+    isThereWallBesideMe,
+    validateSecondPage,
+    validateBoard
+  } = useContext(DataManage);
+  const [showAlert, setShowAlert] = useState(false);
+
+  useEffect(() => {
+    if (validateSecondPage.page == false && validateSecondPage.tried) {
+      _validateBoard();
+    }
+  }, [map_layout, validateSecondPage]);
+
   const gridX = 5;
   const gridY = 6;
   let clicked = false;
@@ -126,6 +136,7 @@ const ShopLayout = () => {
         } else if (column == "Wall") {
           return (
             <div
+              key={`${y}${x}`}
               className="grid-item wall"
               onDragEnter={(e) => dragEnterHandler(e, x, y)}
               onDragLeave={(e) => dragLeaveHandler(e)}
@@ -139,6 +150,7 @@ const ShopLayout = () => {
         } else if (column == "Entrance") {
           return (
             <div
+              key={`${y}${x}`}
               className="grid-item entrance"
               onDragEnter={(e) => dragEnterHandler(e, x, y)}
               onDragLeave={(e) => dragLeaveHandler(e)}
@@ -195,7 +207,7 @@ const ShopLayout = () => {
         for (let x = 0; x < map_layout[y].length; x++) {
           if (x == dragEnter.x && y == dragEnter.y) {
             if (
-              isThereWallBesideMe() ||
+              isThereWallBesideMe(x, y) ||
               dragElement == "Folding Table" ||
               dragElement == "Waiting Area"
             ) {
@@ -211,8 +223,7 @@ const ShopLayout = () => {
         nextMap_Layout.push(row);
       }
 
-      setMap_layout(nextMap_Layout);
-      console.log(nextMap_Layout);
+      changeMap_layout(nextMap_Layout);
     }
   };
 
@@ -251,8 +262,7 @@ const ShopLayout = () => {
         nextMap_Layout.push(row);
       }
 
-      setMap_layout(nextMap_Layout);
-      console.log(nextMap_Layout);
+      changeMap_layout(nextMap_Layout);
     }
   };
 
@@ -273,8 +283,7 @@ const ShopLayout = () => {
         nextMap_Layout.push(row);
       }
 
-      setMap_layout(nextMap_Layout);
-      console.log(nextMap_Layout);
+      changeMap_layout(nextMap_Layout);
     }
   };
 
@@ -296,35 +305,28 @@ const ShopLayout = () => {
         nextMap_Layout.push(row);
       }
 
-      setMap_layout(nextMap_Layout);
-      console.log(nextMap_Layout);
+      changeMap_layout(nextMap_Layout);
     }
   };
 
-  const isThereWallBesideMe = () => {
-    if (
-      dragEnter.y == 0 ||
-      dragEnter.y == map_layout.length - 1 ||
-      dragEnter.x == 0 ||
-      dragEnter.x == map_layout[dragEnter.y].length - 1
-    ) {
-      // sides
-      return true;
-    } else if (map_layout[dragEnter.y - 1][dragEnter.x] == "Wall") {
-      // top side
-      return true;
-    } else if (map_layout[dragEnter.y + 1][dragEnter.x] == "Wall") {
-      // bottom side
-      return true;
-    } else if (map_layout[dragEnter.y][dragEnter.x - 1] == "Wall") {
-      // left side
-      return true;
-    } else if (map_layout[dragEnter.y][dragEnter.x + 1] == "Wall") {
-      // right side
-      return true;
+  const _validateBoard = () => {
+    for (let y = 0; y < map_layout.length; y++) {
+      for (let x = 0; x < map_layout[y].length; x++) {
+        if (
+          map_layout[y][x] != null &&
+          (map_layout[y][x].includes("Washer") ||
+            map_layout[y][x].includes("Dryer"))
+        ) {
+          if (isThereWallBesideMe(x, y) == false) {
+            setShowAlert(true);
+
+            return;
+          }
+        }
+      }
     }
 
-    return false;
+    setShowAlert(false);
   };
 
   return (
@@ -387,49 +389,17 @@ const ShopLayout = () => {
         </div>
       </div>
 
+      {showAlert ? (
+        <div className="alert">
+          <img src={alert} alt="Alert" />
+          <span>Washers or Dryers can only be next to a wall.</span>
+        </div>
+      ) : (
+        ""
+      )}
+
       <div className="grid">
         <DrawGrid />
-        {/* <div className="grid-item empty"></div>
-        <div className="grid-item wall">
-          <span>Wall</span>
-        </div>
-        <div className="grid-item washer">
-          <img src={washingMachine} alt="Washing Machine" />
-          <span>Washer (11 kg)</span>
-        </div>
-        <div className="grid-item dryer">
-          <img src={washingMachine} alt="Drying Machine" />
-          <span>Dryer (25 kg)</span>
-        </div>
-        <div className="grid-item dryer">
-          <img src={washingMachine} alt="Drying Machine" />
-          <span>Dryer (25 kg)</span>
-        </div>
-        <div className="grid-item entrance"></div>
-        <div className="grid-item empty"></div>
-        <div className="grid-item empty"></div>
-        <div className="grid-item empty"></div>
-        <div className="grid-item empty"></div>
-        <div className="grid-item empty"></div>
-        <div className="grid-item empty"></div>
-        <div className="grid-item empty"></div>
-        <div className="grid-item empty"></div>
-        <div className="grid-item empty"></div>
-        <div className="grid-item empty"></div>
-        <div className="grid-item empty"></div>
-        <div className="grid-item empty"></div>
-        <div className="grid-item empty"></div>
-        <div className="grid-item empty"></div>
-        <div className="grid-item empty"></div>
-        <div className="grid-item empty"></div>
-        <div className="grid-item empty"></div>
-        <div className="grid-item empty"></div>
-        <div className="grid-item empty"></div>
-        <div className="grid-item empty"></div>
-        <div className="grid-item empty"></div>
-        <div className="grid-item empty"></div>
-        <div className="grid-item empty"></div>
-        <div className="grid-item empty"></div> */}
       </div>
     </>
   );

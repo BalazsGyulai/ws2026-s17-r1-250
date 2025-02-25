@@ -1,4 +1,5 @@
-import { useState } from "react";
+import { useState, useContext } from "react";
+import DataManage from "./context/DataContext";
 import viteLogo from "/vite.svg";
 import "./App.css";
 import Header from "./components/Header";
@@ -7,12 +8,7 @@ import Informations from "./pages/Informations";
 import ShopLayout from "./pages/ShopLayout";
 
 function App() {
-  const [steps, setSteps] = useState(1);
-
-  const changeStepsHandler = (val) => {
-    setSteps(val);
-  };
-
+  const { steps, changeStepsHandler } = useContext(DataManage);
   return (
     <>
       <article className="container">
