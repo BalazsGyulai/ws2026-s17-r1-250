@@ -6,6 +6,7 @@ import armchair from "../assets/armchair.svg";
 import alert from "../assets/alert.svg";
 
 const ShopLayout = () => {
+  // global values
   const {
     informationValidation,
     map_layout,
@@ -16,43 +17,45 @@ const ShopLayout = () => {
   } = useContext(DataManage);
   const [showAlert, setShowAlert] = useState(false);
 
+  // local values
   useEffect(() => {
-    if (validateSecondPage.page == false && validateSecondPage.tried) {
-      _validateBoard();
-    }
+    _validateBoard();
   }, [map_layout, validateSecondPage]);
 
-  const gridX = 5;
-  const gridY = 6;
-  let clicked = false;
-  let dragElement = null;
-  let dragEnter = { x: null, y: null };
+  // local variables
+  const _gridX = 5;
+  const _gridY = 6;
+  let _clicked = false;
+  let _draggedElement = null;
+  let _dragEnter = { x: null, y: null };
 
-  const DrawGrid = () => {
-    let GRID_MAP = [];
+  //
+  // Draws the map with the pieces inside of them
+  const _DrawGrid = () => {
+    let _GRID_MAP = [];
 
-    for (let y = 0; y < gridY; y++) {
+    for (let y = 0; y < _gridY; y++) {
       let row = [];
 
-      for (let x = 0; x < gridX; x++) {
+      for (let x = 0; x < _gridX; x++) {
         row.push(map_layout[y][x]);
       }
 
-      GRID_MAP.push(row);
+      _GRID_MAP.push(row);
     }
 
-    return GRID_MAP.map((row, y) =>
+    return _GRID_MAP.map((row, y) =>
       row.map((column, x) => {
         if (column == "Washer (8 kg)") {
           return (
             <div
               key={`${y}${x}`}
               className="grid-item washer"
-              onDragEnter={(e) => dragEnterHandler(e, x, y)}
-              onDragLeave={(e) => dragLeaveHandler(e)}
-              onDragOver={(e) => dragOverHandler(e)}
-              onClick={() => clicksHandler(x, y)}
-              onContextMenu={(e) => addEntraceToTile(e, x, y)}
+              onDragEnter={(e) => _dragEnterHandler(e, x, y)}
+              onDragLeave={(e) => _dragLeaveHandler(e)}
+              onDragOver={(e) => _dragOverHandler(e)}
+              onClick={() => _clicksHandler(x, y)}
+              onContextMenu={(e) => _addEntranceToTile(e, x, y)}
             >
               <img src={washingMachine} alt="Washing Machine" />
               <span>Washer (8 kg)</span>
@@ -63,11 +66,11 @@ const ShopLayout = () => {
             <div
               key={`${y}${x}`}
               className="grid-item washer"
-              onDragEnter={(e) => dragEnterHandler(e, x, y)}
-              onDragLeave={(e) => dragLeaveHandler(e)}
-              onDragOver={(e) => dragOverHandler(e)}
-              onClick={() => clicksHandler(x, y)}
-              onContextMenu={(e) => addEntraceToTile(e, x, y)}
+              onDragEnter={(e) => _dragEnterHandler(e, x, y)}
+              onDragLeave={(e) => _dragLeaveHandler(e)}
+              onDragOver={(e) => _dragOverHandler(e)}
+              onClick={() => _clicksHandler(x, y)}
+              onContextMenu={(e) => _addEntranceToTile(e, x, y)}
             >
               <img src={washingMachine} alt="Washing Machine" />
               <span>Washer (11 kg)</span>
@@ -78,11 +81,11 @@ const ShopLayout = () => {
             <div
               key={`${y}${x}`}
               className="grid-item dryer"
-              onDragEnter={(e) => dragEnterHandler(e, x, y)}
-              onDragLeave={(e) => dragLeaveHandler(e)}
-              onDragOver={(e) => dragOverHandler(e)}
-              onClick={() => clicksHandler(x, y)}
-              onContextMenu={(e) => addEntraceToTile(e, x, y)}
+              onDragEnter={(e) => _dragEnterHandler(e, x, y)}
+              onDragLeave={(e) => _dragLeaveHandler(e)}
+              onDragOver={(e) => _dragOverHandler(e)}
+              onClick={() => _clicksHandler(x, y)}
+              onContextMenu={(e) => _addEntranceToTile(e, x, y)}
             >
               <img src={washingMachine} alt="Drying Machine" />
               <span>Dryer (18 kg)</span>
@@ -93,11 +96,11 @@ const ShopLayout = () => {
             <div
               key={`${y}${x}`}
               className="grid-item dryer"
-              onDragEnter={(e) => dragEnterHandler(e, x, y)}
-              onDragLeave={(e) => dragLeaveHandler(e)}
-              onDragOver={(e) => dragOverHandler(e)}
-              onClick={() => clicksHandler(x, y)}
-              onContextMenu={(e) => addEntraceToTile(e, x, y)}
+              onDragEnter={(e) => _dragEnterHandler(e, x, y)}
+              onDragLeave={(e) => _dragLeaveHandler(e)}
+              onDragOver={(e) => _dragOverHandler(e)}
+              onClick={() => _clicksHandler(x, y)}
+              onContextMenu={(e) => _addEntranceToTile(e, x, y)}
             >
               <img src={washingMachine} alt="Drying Machine" />
               <span>Dryer (25 kg)</span>
@@ -108,11 +111,11 @@ const ShopLayout = () => {
             <div
               key={`${y}${x}`}
               className="grid-item"
-              onDragEnter={(e) => dragEnterHandler(e, x, y)}
-              onDragLeave={(e) => dragLeaveHandler(e)}
-              onDragOver={(e) => dragOverHandler(e)}
-              onClick={() => clicksHandler(x, y)}
-              onContextMenu={(e) => addEntraceToTile(e, x, y)}
+              onDragEnter={(e) => _dragEnterHandler(e, x, y)}
+              onDragLeave={(e) => _dragLeaveHandler(e)}
+              onDragOver={(e) => _dragOverHandler(e)}
+              onClick={() => _clicksHandler(x, y)}
+              onContextMenu={(e) => _addEntranceToTile(e, x, y)}
             >
               <img src={space} alt="Folding Tables" />
               <span>Folding Table</span>
@@ -123,11 +126,11 @@ const ShopLayout = () => {
             <div
               key={`${y}${x}`}
               className="grid-item"
-              onDragEnter={(e) => dragEnterHandler(e, x, y)}
-              onDragLeave={(e) => dragLeaveHandler(e)}
-              onDragOver={(e) => dragOverHandler(e)}
-              onClick={() => clicksHandler(x, y)}
-              onContextMenu={(e) => addEntraceToTile(e, x, y)}
+              onDragEnter={(e) => _dragEnterHandler(e, x, y)}
+              onDragLeave={(e) => _dragLeaveHandler(e)}
+              onDragOver={(e) => _dragOverHandler(e)}
+              onClick={() => _clicksHandler(x, y)}
+              onContextMenu={(e) => _addEntranceToTile(e, x, y)}
             >
               <img src={armchair} alt="Waiting Area" />
               <span>Waiting Area</span>
@@ -138,11 +141,11 @@ const ShopLayout = () => {
             <div
               key={`${y}${x}`}
               className="grid-item wall"
-              onDragEnter={(e) => dragEnterHandler(e, x, y)}
-              onDragLeave={(e) => dragLeaveHandler(e)}
-              onDragOver={(e) => dragOverHandler(e)}
-              onClick={() => clicksHandler(x, y)}
-              onContextMenu={(e) => addEntraceToTile(e, x, y)}
+              onDragEnter={(e) => _dragEnterHandler(e, x, y)}
+              onDragLeave={(e) => _dragLeaveHandler(e)}
+              onDragOver={(e) => _dragOverHandler(e)}
+              onClick={() => _clicksHandler(x, y)}
+              onContextMenu={(e) => _addEntranceToTile(e, x, y)}
             >
               <span>Wall</span>
             </div>
@@ -152,11 +155,11 @@ const ShopLayout = () => {
             <div
               key={`${y}${x}`}
               className="grid-item entrance"
-              onDragEnter={(e) => dragEnterHandler(e, x, y)}
-              onDragLeave={(e) => dragLeaveHandler(e)}
-              onDragOver={(e) => dragOverHandler(e)}
-              onClick={() => clicksHandler(x, y)}
-              onContextMenu={(e) => addEntraceToTile(e, x, y)}
+              onDragEnter={(e) => _dragEnterHandler(e, x, y)}
+              onDragLeave={(e) => _dragLeaveHandler(e)}
+              onDragOver={(e) => _dragOverHandler(e)}
+              onClick={() => _clicksHandler(x, y)}
+              onContextMenu={(e) => _addEntranceToTile(e, x, y)}
             ></div>
           );
         } else {
@@ -164,11 +167,11 @@ const ShopLayout = () => {
             <div
               key={`${y}${x}`}
               className="grid-item empty"
-              onDragEnter={(e) => dragEnterHandler(e, x, y)}
-              onDragLeave={(e) => dragLeaveHandler(e)}
-              onDragOver={(e) => dragOverHandler(e)}
-              onClick={() => clicksHandler(x, y)}
-              onContextMenu={(e) => addEntraceToTile(e, x, y)}
+              onDragEnter={(e) => _dragEnterHandler(e, x, y)}
+              onDragLeave={(e) => _dragLeaveHandler(e)}
+              onDragOver={(e) => _dragOverHandler(e)}
+              onClick={() => _clicksHandler(x, y)}
+              onContextMenu={(e) => _addEntranceToTile(e, x, y)}
             ></div>
           );
         }
@@ -176,76 +179,90 @@ const ShopLayout = () => {
     );
   };
 
-  const dragStartHandler = (e, name) => {
-    dragElement = name;
+  // when dragging stats from the bar manu
+  // saves the name of the piece
+  const _dragStartHandler = (e, name) => {
+    _draggedElement = name;
   };
 
-  const dragOverHandler = (e) => {
+  // when an item is dragged over a grid tile
+  const _dragOverHandler = (e) => {
+    e.preventDefault(); // removes that not dropable cursor icon
+  };
+
+  // when an item is dragged into a grid tile
+  // saves the grid tile location
+  const _dragEnterHandler = (e, x, y) => {
     e.preventDefault();
+    _dragEnter.x = x;
+    _dragEnter.y = y;
+
+    e.target.style.opacity = 0.25; // changes tile opcaity
   };
 
-  const dragEnterHandler = (e, x, y) => {
-    e.preventDefault();
-    dragEnter.x = x;
-    dragEnter.y = y;
-
-    e.target.style.opacity = 0.25;
+  // when an item goes off a grid tile
+  // resets the saved grid tile location
+  const _dragLeaveHandler = (e) => {
+    e.target.style.opacity = 0.75; // changes tile opacity back
+    _dragEnter.x = null;
+    _dragEnter.y = null;
   };
 
-  const dragLeaveHandler = (e) => {
-    e.target.style.opacity = 0.75;
-    dragEnter.x = null;
-    dragEnter.y = null;
-  };
-
-  const dragEndHandler = () => {
-    if (dragEnter.x != null && dragEnter.y != null) {
-      let nextMap_Layout = [];
+  // when an item is dropped
+  // description for functions are in DataContext.jsx
+  const _dragEndHandler = () => {
+    if (_dragEnter.x != null && _dragEnter.y != null) {
+      let _nextMapLayout = [];
       for (let y = 0; y < map_layout.length; y++) {
-        let row = [];
+        let _row = [];
 
         for (let x = 0; x < map_layout[y].length; x++) {
-          if (x == dragEnter.x && y == dragEnter.y) {
+          if (x == _dragEnter.x && y == _dragEnter.y) {
             if (
               isThereWallBesideMe(x, y) ||
-              dragElement == "Folding Table" ||
-              dragElement == "Waiting Area"
+              _draggedElement == "Folding Table" ||
+              _draggedElement == "Waiting Area"
             ) {
-              row.push(dragElement);
+              _row.push(_draggedElement);
             } else {
-              row.push(map_layout[y][x]);
+              _row.push(map_layout[y][x]);
             }
           } else {
-            row.push(map_layout[y][x]);
+            _row.push(map_layout[y][x]);
           }
         }
 
-        nextMap_Layout.push(row);
+        _nextMapLayout.push(_row);
       }
 
-      changeMap_layout(nextMap_Layout);
+      changeMap_layout(_nextMapLayout);
     }
   };
 
-  const clicksHandler = (x, y) => {
-    if (clicked) {
-      addWallToTile(x, y);
+  // examines how many times the user clicked on a grid
+  const _clicksHandler = (x, y) => {
+    // double click
+    if (_clicked) {
+      _addWallToTile(x, y);
 
-      clicked = false;
+      _clicked = false;
       return;
     }
 
-    clicked = true;
+    // single click
+    _clicked = true;
     setTimeout(() => {
-      if (clicked) {
-        clearTileHandler(x, y);
+      if (_clicked) {
+        _clearTile(x, y);
       }
 
-      clicked = false;
+      _clicked = false;
     }, 200);
   };
 
-  const clearTileHandler = (clearX, clearY) => {
+  // removes item from a tile
+  // description for function in DataContext.jsx
+  const _clearTile = (clearX, clearY) => {
     if (clearX != null && clearY != null) {
       let nextMap_Layout = [];
       for (let y = 0; y < map_layout.length; y++) {
@@ -266,7 +283,9 @@ const ShopLayout = () => {
     }
   };
 
-  const addWallToTile = (addX, addY) => {
+  // creates a wall in a tile
+  // description for function in DataContext.jsx
+  const _addWallToTile = (addX, addY) => {
     if (addX != null && addY != null) {
       let nextMap_Layout = [];
       for (let y = 0; y < map_layout.length; y++) {
@@ -287,7 +306,9 @@ const ShopLayout = () => {
     }
   };
 
-  const addEntraceToTile = (e, addX, addY) => {
+  // creates an entrance in a tile
+  // description for function in DataContext.jsx
+  const _addEntranceToTile = (e, addX, addY) => {
     e.preventDefault();
     if (addX != null && addY != null) {
       let nextMap_Layout = [];
@@ -309,6 +330,7 @@ const ShopLayout = () => {
     }
   };
 
+  // examines the validation to the board locally so it gives instant feedback
   const _validateBoard = () => {
     for (let y = 0; y < map_layout.length; y++) {
       for (let x = 0; x < map_layout[y].length; x++) {
@@ -335,8 +357,8 @@ const ShopLayout = () => {
       <div className="dnd-row">
         <div
           className="grid-item washer"
-          onDragStart={(e) => dragStartHandler(e, "Washer (8 kg)")}
-          onDragEnd={() => dragEndHandler()}
+          onDragStart={(e) => _dragStartHandler(e, "Washer (8 kg)")}
+          onDragEnd={() => _dragEndHandler()}
           draggable={true}
         >
           <img src={washingMachine} alt="Washing Machine" />
@@ -344,8 +366,8 @@ const ShopLayout = () => {
         </div>
         <div
           className="grid-item washer"
-          onDragStart={(e) => dragStartHandler(e, "Washer (11 kg)")}
-          onDragEnd={() => dragEndHandler()}
+          onDragStart={(e) => _dragStartHandler(e, "Washer (11 kg)")}
+          onDragEnd={() => _dragEndHandler()}
           draggable={true}
         >
           <img src={washingMachine} alt="Washing Machine" />
@@ -353,8 +375,8 @@ const ShopLayout = () => {
         </div>
         <div
           className="grid-item dryer"
-          onDragStart={(e) => dragStartHandler(e, "Dryer (18 kg)")}
-          onDragEnd={() => dragEndHandler()}
+          onDragStart={(e) => _dragStartHandler(e, "Dryer (18 kg)")}
+          onDragEnd={() => _dragEndHandler()}
           draggable={true}
         >
           <img src={washingMachine} alt="Drying Machine" />
@@ -362,8 +384,8 @@ const ShopLayout = () => {
         </div>
         <div
           className="grid-item dryer"
-          onDragStart={(e) => dragStartHandler(e, "Dryer (25 kg)")}
-          onDragEnd={() => dragEndHandler()}
+          onDragStart={(e) => _dragStartHandler(e, "Dryer (25 kg)")}
+          onDragEnd={() => _dragEndHandler()}
           draggable={true}
         >
           <img src={washingMachine} alt="Drying Machine" />
@@ -371,8 +393,8 @@ const ShopLayout = () => {
         </div>
         <div
           className="grid-item"
-          onDragStart={(e) => dragStartHandler(e, "Folding Table")}
-          onDragEnd={() => dragEndHandler()}
+          onDragStart={(e) => _dragStartHandler(e, "Folding Table")}
+          onDragEnd={() => _dragEndHandler()}
           draggable={true}
         >
           <img src={space} alt="Folding Tables" />
@@ -380,8 +402,8 @@ const ShopLayout = () => {
         </div>
         <div
           className="grid-item"
-          onDragStart={(e) => dragStartHandler(e, "Waiting Area")}
-          onDragEnd={() => dragEndHandler()}
+          onDragStart={(e) => _dragStartHandler(e, "Waiting Area")}
+          onDragEnd={() => _dragEndHandler()}
           draggable={true}
         >
           <img src={armchair} alt="Waiting Area" />
@@ -399,7 +421,7 @@ const ShopLayout = () => {
       )}
 
       <div className="grid">
-        <DrawGrid />
+        <_DrawGrid />
       </div>
     </>
   );
