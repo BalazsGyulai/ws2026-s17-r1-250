@@ -4,7 +4,7 @@ const DataManage = createContext();
 
 export function Data({ children }) {
   // global
-  const [steps, setSteps] = useState(3);
+  const [steps, setSteps] = useState(0);
   // informations page
   const [name, setName] = useState({ value: "", valid: null });
   const [description, setDescription] = useState({ value: "", valid: null });
