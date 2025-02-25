@@ -4,6 +4,7 @@ import washingMachine from "../assets/washing-machine.svg";
 import space from "../assets/space.svg";
 import armchair from "../assets/armchair.svg";
 import alert from "../assets/alert.svg";
+import GridItem from "./../UI/GridItem";
 
 const ShopLayout = () => {
   // global values
@@ -48,9 +49,10 @@ const ShopLayout = () => {
       row.map((column, x) => {
         if (column == "Washer (8 kg)") {
           return (
-            <div
-              key={`${y}${x}`}
-              className="grid-item washer"
+            <GridItem
+              className={"grid-item washer"}
+              x={x}
+              y={y}
               onDragEnter={(e) => _dragEnterHandler(e, x, y)}
               onDragLeave={(e) => _dragLeaveHandler(e)}
               onDragOver={(e) => _dragOverHandler(e)}
@@ -59,13 +61,14 @@ const ShopLayout = () => {
             >
               <img src={washingMachine} alt="Washing Machine" />
               <span>Washer (8 kg)</span>
-            </div>
+            </GridItem>
           );
         } else if (column == "Washer (11 kg)") {
           return (
-            <div
-              key={`${y}${x}`}
-              className="grid-item washer"
+            <GridItem
+              className={"grid-item washer"}
+              x={x}
+              y={y}
               onDragEnter={(e) => _dragEnterHandler(e, x, y)}
               onDragLeave={(e) => _dragLeaveHandler(e)}
               onDragOver={(e) => _dragOverHandler(e)}
@@ -74,13 +77,14 @@ const ShopLayout = () => {
             >
               <img src={washingMachine} alt="Washing Machine" />
               <span>Washer (11 kg)</span>
-            </div>
+            </GridItem>
           );
         } else if (column == "Dryer (18 kg)") {
           return (
-            <div
-              key={`${y}${x}`}
-              className="grid-item dryer"
+            <GridItem
+              className={"grid-item dryer"}
+              x={x}
+              y={y}
               onDragEnter={(e) => _dragEnterHandler(e, x, y)}
               onDragLeave={(e) => _dragLeaveHandler(e)}
               onDragOver={(e) => _dragOverHandler(e)}
@@ -89,13 +93,14 @@ const ShopLayout = () => {
             >
               <img src={washingMachine} alt="Drying Machine" />
               <span>Dryer (18 kg)</span>
-            </div>
+            </GridItem>
           );
         } else if (column == "Dryer (25 kg)") {
           return (
-            <div
-              key={`${y}${x}`}
-              className="grid-item dryer"
+            <GridItem
+              className={"grid-item dryer"}
+              x={x}
+              y={y}
               onDragEnter={(e) => _dragEnterHandler(e, x, y)}
               onDragLeave={(e) => _dragLeaveHandler(e)}
               onDragOver={(e) => _dragOverHandler(e)}
@@ -104,13 +109,14 @@ const ShopLayout = () => {
             >
               <img src={washingMachine} alt="Drying Machine" />
               <span>Dryer (25 kg)</span>
-            </div>
+            </GridItem>
           );
         } else if (column == "Folding Table") {
           return (
-            <div
-              key={`${y}${x}`}
-              className="grid-item"
+            <GridItem
+              className={"grid-item"}
+              x={x}
+              y={y}
               onDragEnter={(e) => _dragEnterHandler(e, x, y)}
               onDragLeave={(e) => _dragLeaveHandler(e)}
               onDragOver={(e) => _dragOverHandler(e)}
@@ -119,13 +125,14 @@ const ShopLayout = () => {
             >
               <img src={space} alt="Folding Tables" />
               <span>Folding Table</span>
-            </div>
+            </GridItem>
           );
         } else if (column == "Waiting Area") {
           return (
-            <div
-              key={`${y}${x}`}
-              className="grid-item"
+            <GridItem
+              className={"grid-item"}
+              x={x}
+              y={y}
               onDragEnter={(e) => _dragEnterHandler(e, x, y)}
               onDragLeave={(e) => _dragLeaveHandler(e)}
               onDragOver={(e) => _dragOverHandler(e)}
@@ -134,13 +141,14 @@ const ShopLayout = () => {
             >
               <img src={armchair} alt="Waiting Area" />
               <span>Waiting Area</span>
-            </div>
+            </GridItem>
           );
         } else if (column == "Wall") {
           return (
-            <div
-              key={`${y}${x}`}
-              className="grid-item wall"
+            <GridItem
+              className={"grid-item wall"}
+              x={x}
+              y={y}
               onDragEnter={(e) => _dragEnterHandler(e, x, y)}
               onDragLeave={(e) => _dragLeaveHandler(e)}
               onDragOver={(e) => _dragOverHandler(e)}
@@ -148,31 +156,35 @@ const ShopLayout = () => {
               onContextMenu={(e) => _addEntranceToTile(e, x, y)}
             >
               <span>Wall</span>
-            </div>
+            </GridItem>
           );
         } else if (column == "Entrance") {
           return (
-            <div
-              key={`${y}${x}`}
-              className="grid-item entrance"
+            <GridItem
+              className={"grid-item entrance"}
+              x={x}
+              y={y}
               onDragEnter={(e) => _dragEnterHandler(e, x, y)}
               onDragLeave={(e) => _dragLeaveHandler(e)}
               onDragOver={(e) => _dragOverHandler(e)}
               onClick={() => _clicksHandler(x, y)}
               onContextMenu={(e) => _addEntranceToTile(e, x, y)}
-            ></div>
+            >
+              <span>Wall</span>
+            </GridItem>
           );
         } else {
           return (
-            <div
-              key={`${y}${x}`}
-              className="grid-item empty"
+            <GridItem
+              className={"grid-item empty"}
+              x={x}
+              y={y}
               onDragEnter={(e) => _dragEnterHandler(e, x, y)}
               onDragLeave={(e) => _dragLeaveHandler(e)}
               onDragOver={(e) => _dragOverHandler(e)}
               onClick={() => _clicksHandler(x, y)}
               onContextMenu={(e) => _addEntranceToTile(e, x, y)}
-            ></div>
+            ></GridItem>
           );
         }
       })

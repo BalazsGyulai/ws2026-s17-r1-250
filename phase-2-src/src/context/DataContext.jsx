@@ -364,6 +364,10 @@ export function Data({ children }) {
       [null, null, null, null, null],
       [null, null, null, null, null]
     ]);
+    setValidateFirstPage({
+      page: false,
+      tried: false
+    });
     setValidateSecondPage({
       page: false,
       tried: false
