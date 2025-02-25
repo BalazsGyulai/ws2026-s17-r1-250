@@ -2,8 +2,13 @@ import React, { useContext } from "react";
 import DataManage from "../context/DataContext";
 
 const Footer = (props) => {
+  // global values
   const { informationValidation } = useContext(DataManage);
-  const NextStepHandler = () => {
+
+  // local values
+  // goes to the next page by adding +1 to the global steps variable
+  // at 3 it stops adding more
+  const _NextStepHandler = () => {
     const informationValid = informationValidation();
 
     if (informationValid) {
@@ -15,7 +20,9 @@ const Footer = (props) => {
     }
   };
 
-  const PrevStepHandler = () => {
+  // goes back to the previous page by substacting -1 from the global steps variable
+  // at 0 it won't subtract any more
+  const _PrevStepHandler = () => {
     const prevValue = props.steps - 1;
 
     if (prevValue >= 0) {
@@ -27,12 +34,12 @@ const Footer = (props) => {
     <footer className="footer">
       <button
         className="btn"
-        onClick={PrevStepHandler}
+        onClick={_PrevStepHandler}
         disabled={props.steps == 0 ? true : false}
       >
         Back
       </button>
-      <button className="btn" onClick={NextStepHandler}>
+      <button className="btn" onClick={_NextStepHandler}>
         Next
       </button>
     </footer>

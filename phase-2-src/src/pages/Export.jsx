@@ -2,6 +2,7 @@ import React, { useContext } from "react";
 import DataManage from "../context/DataContext";
 
 const Export = () => {
+  // global values
   const {
     name,
     description,
@@ -17,7 +18,27 @@ const Export = () => {
     resetFormFields
   } = useContext(DataManage);
 
-  const copyFormValues = () => {
+  // local values
+  // creates a file with its context and automatically downloads it
+  // file - file's context
+  // type - file format
+  // downloadedFileName - name of the file that will downloaded
+  const _makesFileDowloadable = (file, type, downloadedFileName) => {
+    const blob = new Blob([file], { type: type });
+    const href = URL.createObjectURL(blob);
+    const link = document.createElement("a");
+
+    link.href = href;
+    link.download = downloadedFileName;
+
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+  };
+
+  // creates JSON file
+  const _copyFormValues = () => {
+    // base of the file with values
     const jsonFile = {
       name: name.value,
       description: description.value,
@@ -36,21 +57,15 @@ const Export = () => {
     };
 
     const json = JSON.stringify(jsonFile);
-    const blob = new Blob([json], { type: "application/json" });
-    const href = URL.createObjectURL(blob);
-    const link = document.createElement("a");
 
-    link.href = href;
-    link.download = `form_values.json`;
-
-    document.body.appendChild(link);
-    link.click();
-    document.body.removeChild(link);
+    _makesFileDowloadable(json, "application/json", "form_values.json");
   };
 
-  const copyFloorPlan = () => {
+  // creates CSV file
+  const _copyFloorPlan = () => {
     let csv = "";
 
+    // separates the shop layout
     for (let y = 0; y < map_layout.length; y++) {
       for (let x = 0; x < map_layout[y].length; x++) {
         if (map_layout[y][x] != null) {
@@ -66,16 +81,7 @@ const Export = () => {
       csv = csv + "\n";
     }
 
-    const blob = new Blob([csv], { type: "text/csv" });
-    const href = URL.createObjectURL(blob);
-    const link = document.createElement("a");
-
-    link.href = href;
-    link.download = `floorplan.csv`;
-
-    document.body.appendChild(link);
-    link.click();
-    document.body.removeChild(link);
+    _makesFileDowloadable(csv, "text/csv", "floorplan.csv");
   };
 
   return (
@@ -83,10 +89,10 @@ const Export = () => {
       <div className="step-4-screen">
         <h2>Successful submission!</h2>
         <p>Thank you for the new location registration!</p>
-        <button className="btn" onClick={copyFormValues}>
+        <button className="btn" onClick={_copyFormValues}>
           COPY FORM VALUES
         </button>
-        <button className="btn" onClick={copyFloorPlan}>
+        <button className="btn" onClick={_copyFloorPlan}>
           EXPORT FLOORPLAN
         </button>
         <hr />

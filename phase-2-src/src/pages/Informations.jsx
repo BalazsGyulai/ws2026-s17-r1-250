@@ -2,6 +2,7 @@ import React, { useState, useContext, useEffect } from "react";
 import DataManage from "../context/DataContext";
 
 const Informations = () => {
+  // global values
   const {
     name,
     changeNameHandler,
@@ -24,9 +25,7 @@ const Informations = () => {
     validateFirstPage
   } = useContext(DataManage);
 
-  //---------------------------
-  // local - for live validation
-  //---------------------------
+  // local values & variables
   const [_nameValid, _setNameValid] = useState(null);
   const [_descriptionValid, _setdescriptionValid] = useState(null);
   const [_postalCode, _setpostalCode] = useState(null);
@@ -37,7 +36,7 @@ const Informations = () => {
   const [_opento, _setopento] = useState(null);
 
   useEffect(() => {
-    // does the live validation
+    // does the live validation locally
     if (name.valid != null) {
       _setNameValid(CheckLengthValidation(name.value, 3, 32));
     }

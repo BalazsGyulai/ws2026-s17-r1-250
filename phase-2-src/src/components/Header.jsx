@@ -4,9 +4,11 @@ import maximize from "../assets/maximize.svg";
 import minimize from "../assets/minimize.svg";
 
 const Header = (props) => {
+  // local values
   const [fullscreen, setFullscreen] = useState(false); // for changing the fullsize icon
 
-  const FullScreenHandler = () => {
+  // full sizes the screen
+  const _FullScreenHandler = () => {
     if (!document.fullscreenElement) {
       document.documentElement.requestFullscreen();
       setFullscreen(!fullscreen);
@@ -67,7 +69,7 @@ const Header = (props) => {
         </button>
       </div>
 
-      <button className="fullscreen-btn" onClick={FullScreenHandler}>
+      <button className="fullscreen-btn" onClick={_FullScreenHandler}>
         <img src={fullscreen ? minimize : maximize} alt="Maximize" />
       </button>
     </header>

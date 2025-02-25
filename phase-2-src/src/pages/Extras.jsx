@@ -1,8 +1,11 @@
 import React, { useContext } from "react";
 import DataManage from "../context/DataContext";
 const Extras = () => {
+  // global values
   const { extras, changeExtras } = useContext(DataManage);
 
+  // local values
+  // modifies the global values based on what the user selected
   const changeExtrasHandler = (change, value) => {
     if (change == "freeWiFi") {
       changeExtras({ ...extras, freeWiFi: value });
