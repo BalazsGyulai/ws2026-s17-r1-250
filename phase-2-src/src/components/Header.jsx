@@ -28,25 +28,25 @@ const Header = (props) => {
           steps={props.steps}
           onClick={() => props.changeStepsHandler(0)}
           content={1}
-        ></NavButton>
+        />
         <NavDash steps={props.steps} lower={1} />
         <NavButton
           steps={props.steps}
           onClick={() => props.changeStepsHandler(1)}
           content={2}
-        ></NavButton>
+        />
         <NavDash steps={props.steps} lower={2} />
         <NavButton
           steps={props.steps}
           onClick={() => props.changeStepsHandler(2)}
           content={3}
-        ></NavButton>
+        />
         <NavDash steps={props.steps} lower={3} />
         <NavButton
           steps={props.steps}
           onClick={() => props.changeStepsHandler(3)}
           content={4}
-        ></NavButton>
+        />
       </div>
 
       <button className="fullscreen-btn" onClick={_FullScreenHandler}>
